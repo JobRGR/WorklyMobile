@@ -1,5 +1,5 @@
 import React, {Component, Text, View, TouchableHighlight} from 'react-native'
-import styles from './link.styles'
+import styles from './button.styles'
 
 class Link extends Component {
 
@@ -7,7 +7,7 @@ class Link extends Component {
     return (
       <View>
         <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
-          <Text style={styles.link}>{this.props.text}</Text>
+          <Text style={styles.button}>{this.props.text}</Text>
         </TouchableHighlight>
       </View>
     )
