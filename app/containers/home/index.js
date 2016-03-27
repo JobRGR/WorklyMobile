@@ -1,4 +1,5 @@
-import React, {Component, Text, View} from 'react-native'
+import React, {Component, Text, View, TouchableHighlight} from 'react-native'
+import {Actions} from 'react-native-redux-router'
 import styles from './home.styles'
 
 class Home extends Component {
@@ -9,13 +10,15 @@ class Home extends Component {
         <Text style={styles.welcome}>
           Welcome to Workly!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+        <Text style={styles.sub}>
+          Найкращий інструмент для пошуку вакансій для студентів
         </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TouchableHighlight onPress={Actions.signup}>
+          <Text style={styles.button}>Зареєструватись</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={Actions.login}>
+          <Text style={styles.button}>Увійти</Text>
+        </TouchableHighlight>
       </View>
     )
   }

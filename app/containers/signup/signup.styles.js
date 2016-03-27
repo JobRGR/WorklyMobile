@@ -9,18 +9,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
 
-  welcome: {
-    fontSize: 24,
+  title: {
+    fontSize: 20,
     textAlign: 'center',
     margin: 10
-  },
-
-  sub: {
-    textAlign: 'center',
-    color: '#333333',
-    width: 260,
-    fontSize: 16,
-    marginBottom: 20
   },
 
   button: {
@@ -30,6 +22,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     padding: 3
   }
+
 })
 
 export default styles
