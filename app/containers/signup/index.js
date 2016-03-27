@@ -48,7 +48,7 @@ class SignUp extends Component {
           value={this.props.confirm}
           onChangeText={this.props.setConfirm}
         />
-        <Button text='Зареєструватись' />
+        <Button onPress={Actions.feed} text='Зареєструватись' />
         <Link onPress={Actions.login} text='Увійти' />
       </View>
     )

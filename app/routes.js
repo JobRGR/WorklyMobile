@@ -3,6 +3,7 @@ import {Router, Route, Schema, Animations} from 'react-native-redux-router'
 import Home from './containers/home'
 import SignUp from './containers/signup'
 import Login from './containers/login'
+import Feed from './containers/feed'
 import {color} from './components/nav_bar/nav_bar.styles'
 import {NavBar, NavBarBack} from './components/nav_bar'
 
@@ -23,6 +24,7 @@ class Routes extends Component {
           <Route name='home' initial={true} component={Home} title='Workly' />
           <Route name='signup' component={SignUp} title='SignUp' schema='auth' title='Реєстрація' />
           <Route name='login' component={Login} title='Login' schema='auth'  title='Вхід' />
+          <Route name='feed' component={Feed} title='Вакансії' />
         </Router>
       </View>
     )

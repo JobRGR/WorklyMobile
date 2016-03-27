@@ -32,7 +32,7 @@ class Login extends Component {
           password
           onChangeText={this.props.setPassword}
           value={this.props.password} />
-        <Button text='Увійти' />
+        <Button onPress={Actions.feed} text='Увійти' />
         <Link onPress={Actions.signup} text='Зареєструватись' />
       </View>
     )
