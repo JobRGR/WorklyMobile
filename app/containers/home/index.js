@@ -1,5 +1,6 @@
 import React, {Component, Text, View, TouchableHighlight} from 'react-native'
 import {Actions} from 'react-native-redux-router'
+import Logo from '../../components/logo'
 import styles from './home.styles'
 
 class Home extends Component {
@@ -7,6 +8,7 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Logo />
         <Text style={styles.welcome}>
           Welcome to Workly!
         </Text>
@@ -14,10 +16,10 @@ class Home extends Component {
           Найкращий інструмент для пошуку вакансій для студентів
         </Text>
         <TouchableHighlight onPress={Actions.signup}>
-          <Text style={styles.button}>Зареєструватись</Text>
+          <Text style={styles.link}>Зареєструватись</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={Actions.login}>
-          <Text style={styles.button}>Увійти</Text>
+          <Text style={styles.link}>Увійти</Text>
         </TouchableHighlight>
       </View>
     )

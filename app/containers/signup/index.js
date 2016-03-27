@@ -11,7 +11,7 @@ class SignUp extends Component {
           Зареєструватись
         </Text>
         <TouchableHighlight onPress={Actions.login}>
-          <Text style={styles.button}>Увійти</Text>
+          <Text style={styles.link}>Увійти</Text>
         </TouchableHighlight>
       </View>
     )

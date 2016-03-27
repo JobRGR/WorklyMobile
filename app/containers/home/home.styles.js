@@ -1,18 +1,18 @@
 import {StyleSheet} from 'react-native'
-
+import {color} from '../../components/nav_bar/nav_bar.styles'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#fff'
   },
 
   welcome: {
     fontSize: 24,
     textAlign: 'center',
-    margin: 10
+    marginBottom: 10
   },
 
   sub: {
@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
 
-  button: {
+  link: {
     textAlign: 'center',
-    color: '#333333',
+    color,
     fontSize: 16,
     marginBottom: 3,
     padding: 3
