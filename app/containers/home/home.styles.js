@@ -12,12 +12,13 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 24,
     textAlign: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    color: '#5a5b5f'
   },
 
   sub: {
     textAlign: 'center',
-    color: '#333333',
+    color: '#5a5b5f',
     width: 260,
     fontSize: 16,
     marginBottom: 20

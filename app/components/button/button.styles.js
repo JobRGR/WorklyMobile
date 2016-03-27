@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
     width: 280,
-    padding: 5,
+    padding: 8,
     backgroundColor: color,
     borderRadius: 5,
     fontSize: 18,
