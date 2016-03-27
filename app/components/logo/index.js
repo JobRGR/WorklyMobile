@@ -1,5 +1,5 @@
 import React, {Component, View, Image} from 'react-native'
-import styles from './logo.style'
+import styles from './logo.styles'
 import uri from './logo.image'
 
 class Logo extends Component {

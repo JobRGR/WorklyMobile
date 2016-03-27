@@ -1,5 +1,6 @@
-import React, {Component, Text, View, TouchableHighlight} from 'react-native'
+import React, {Component, Text, View} from 'react-native'
 import {Actions} from 'react-native-redux-router'
+import Link from '../../components/link'
 import styles from './signup.styles'
 
 class SignUp extends Component {
@@ -10,9 +11,7 @@ class SignUp extends Component {
         <Text style={styles.title}>
           Зареєструватись
         </Text>
-        <TouchableHighlight onPress={Actions.login}>
-          <Text style={styles.link}>Увійти</Text>
-        </TouchableHighlight>
+        <Link onPress={Actions.login} text='Увійти' />
       </View>
     )
   }
