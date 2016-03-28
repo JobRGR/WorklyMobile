@@ -14,7 +14,7 @@ class VacancyItem extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.row}>
-          <Image source={{uri: this.props.vacancy.company.avatar}} style={styles.image} />
+          <Image source={{uri: `${this.props.vacancy.company.avatar}?${Date.now()}${Math.random()}`}} style={styles.image} />
           <View>
             <Text style={styles.title}>{this.short(this.props.vacancy.name, 30)}</Text>
             <View style={[styles.row, styles.subRow]}>

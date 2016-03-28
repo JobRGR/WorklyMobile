@@ -10,9 +10,12 @@ export let fetchVacancies = () => dispatch => {
     .fetchVacancies()
     .then(({status, data}) => {
       if (status != 200 || !data.vacancies) {
-        throw new Error('Fetch Error')
+        throw new Error(data)
       }
       dispatch({type: FETCH_VACANCIES, data: data.vacancies})
     })
-    .catch(_ => dispatch({type: ERROR_FETCH_VACANCIES}))
+    .catch(err => {
+      console.log(err)
+      dispatch({type: ERROR_FETCH_VACANCIES})
+    })
 }

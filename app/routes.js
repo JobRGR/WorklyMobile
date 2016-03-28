@@ -1,11 +1,13 @@
 import React, {Component, View, StatusBar} from 'react-native'
+import {connect} from 'react-redux'
 import {Router, Route, Schema, Animations} from 'react-native-redux-router'
 import Home from './containers/home'
 import SignUp from './containers/signup'
 import Login from './containers/login'
 import Feed from './containers/feed'
+import Start from './containers/start'
 import {color} from './components/nav_bar/nav_bar.styles'
-import {NavBar, NavBarBack} from './components/nav_bar'
+import {NavBar, NavBarBack, NavBarLogout} from './components/nav_bar'
 
 class Routes extends Component {
 
@@ -20,15 +22,17 @@ class Routes extends Component {
         <Router>
           <Schema name='auth' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarBack} />
           <Schema name='default' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBar} />
+          <Schema name='logout' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarLogout} dispatch={this.props.dispatch} />
 
-          <Route name='home' initial={true} component={Home} title='Workly' />
+          <Route name='start' initial={true} component={Start} title='Workly' />
+          <Route name='home' component={Home} title='Workly' />
           <Route name='signup' component={SignUp} title='SignUp' schema='auth' title='Реєстрація' />
           <Route name='login' component={Login} title='Login' schema='auth'  title='Вхід' />
-          <Route name='feed' component={Feed} title='Вакансії' />
+          <Route name='feed' component={Feed} title='Вакансії' schema='logout' />
         </Router>
       </View>
     )
   }
 }
 
-export default Routes
+export default connect()(Routes)

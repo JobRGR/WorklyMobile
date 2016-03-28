@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native'
-import {color} from '../../components/nav_bar/nav_bar.styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,14 +13,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
     color: '#5a5b5f'
-  },
-
-  sub: {
-    textAlign: 'center',
-    color: '#5a5b5f',
-    width: 260,
-    fontSize: 16,
-    marginBottom: 20
   }
 })
 

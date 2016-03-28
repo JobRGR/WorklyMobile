@@ -1,6 +1,7 @@
 import React, {Component, PropTypes, Text, View} from 'react-native'
 import {Actions} from 'react-native-redux-router'
 import {connect} from 'react-redux'
+import {loginStudent} from '../../actions/student'
 import {setEmail, setPassword} from '../../actions/login'
 import Logo from '../../components/logo'
 import AuthInput from '../../components/auth_input'
@@ -15,7 +16,13 @@ class Login extends Component {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     setEmail: PropTypes.func.isRequired,
-    setPassword: PropTypes.func.isRequired
+    setPassword: PropTypes.func.isRequired,
+    loginStudent: PropTypes.func.isRequired
+  }
+
+  onClick() {
+    let {email, password} = this.props
+    this.props.loginStudent({email, password})
   }
 
   render() {
@@ -32,7 +39,7 @@ class Login extends Component {
           password
           onChangeText={this.props.setPassword}
           value={this.props.password} />
-        <Button onPress={Actions.feed} text='Увійти' />
+        <Button onPress={() => this.onClick()} text='Увійти' />
         <Link onPress={Actions.signup} text='Зареєструватись' />
       </View>
     )
@@ -42,7 +49,8 @@ class Login extends Component {
 const mapStateToProps = ({login}) => ({...login})
 const mapDispatchToProps =  dispatch => ({
   setEmail: data => dispatch(setEmail(data)),
-  setPassword: data => dispatch(setPassword(data))
+  setPassword: data => dispatch(setPassword(data)),
+  loginStudent: data => dispatch(loginStudent(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
