@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
 
   title: {
     color: '#5a5b5f',
-    fontSize: 16
+    fontSize: 16,
+    marginTop: 10
   },
 
   text: {
@@ -26,9 +27,23 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 100,
-    height: 100,
-    position: 'absolute'
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 15,
+    marginBottom: 10
+  },
+
+  subRow: {
+    marginTop: 5,
+    marginBottom: 5
+  },
+
+  row: {
+    flex: 1,
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection:'row',
   }
 })
 
