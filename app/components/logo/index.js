@@ -7,7 +7,7 @@ class Logo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={{uri}} style={{width: 150, height: 150}} />
+        <Image source={{uri}} style={styles.image} />
       </View>
     )
   }
