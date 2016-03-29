@@ -3,6 +3,9 @@ import ClientApi from '../services/client_api'
 export const FETCH_VACANCIES = 'FETCH_VACANCIES'
 export const START_FETCH_VACANCIES = 'START_FETCH_VACANCIES'
 export const ERROR_FETCH_VACANCIES = 'ERROR_FETCH_VACANCIES'
+export const UPDATE_COUNT = 'UPDATE_COUNT'
+
+export let updateCount = ({type: UPDATE_COUNT})
 
 export let fetchVacancies = () => dispatch => {
   dispatch({type: START_FETCH_VACANCIES})

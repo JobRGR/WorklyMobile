@@ -5,6 +5,14 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     padding: 20
+  },
+
+  more: {
+    textAlign: 'center',
+    color,
+    fontSize: 16,
+    marginBottom: 15,
+    padding: 3
   }
 })
 
