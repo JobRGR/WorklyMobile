@@ -10,12 +10,12 @@ class ClientApi {
   }
 
   fetchStudent() {
-    return request({url: `${this.url}/student-status`})
+    return request({url: `${this.url}/status`})
   }
 
   loginStudent(body) {
     return request({
-      url: `${this.url}/student-login`,
+      url: `${this.url}/login`,
       method: 'post',
       body
     })
