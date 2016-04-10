@@ -10,6 +10,7 @@ class AuthInput extends Component {
         <TextInput
           keyboardType={this.props.keyboardType || 'default'}
           style={styles.input}
+          maxLength={this.props.maxLength || 150}
           secureTextEntry={this.props.password}
           placeholderTextColor='#A5A5A5'
           placeholder={this.props.placeholder}

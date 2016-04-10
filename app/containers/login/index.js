@@ -16,6 +16,7 @@ class Login extends Component {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     setEmail: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
     setPassword: PropTypes.func.isRequired,
     loginUser: PropTypes.func.isRequired
   }
@@ -32,21 +33,26 @@ class Login extends Component {
         <AuthInput
           placeholder='Електронна пошта'
           keyboardType='email-address'
+          maxLength={150}
           onChangeText={this.props.setEmail}
           value={this.props.email} />
         <AuthInput
           placeholder='Пароль'
           password
+          maxLength={50}
           onChangeText={this.props.setPassword}
           value={this.props.password} />
-        <Button onPress={() => this.onClick()} text='Увійти' />
+        <Button loading={this.props.loading} onPress={() => this.onClick()} text='Увійти' />
         <Link onPress={Actions.signup} text='Зареєструватись' />
       </View>
     )
   }
 }
 
-const mapStateToProps = ({login}) => login
+const mapStateToProps = ({login, user}) => ({
+  ...login,
+  loading: user.startLogin
+})
 const mapDispatchToProps = dispatch => ({
   setEmail: data => dispatch(setEmail(data)),
   setPassword: data => dispatch(setPassword(data)),

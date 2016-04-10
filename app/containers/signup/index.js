@@ -16,6 +16,7 @@ class SignUp extends Component {
     password: PropTypes.string.isRequired,
     confirm: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
     setEmail: PropTypes.func.isRequired,
     setPassword: PropTypes.func.isRequired,
     setConfirm: PropTypes.func.isRequired,
@@ -35,34 +36,41 @@ class SignUp extends Component {
         <AuthInput
           placeholder="Ім'я та Прізвище"
           value={this.props.name}
+          maxLength={150}
           onChangeText={this.props.setName}
         />
         <AuthInput
           placeholder='Електронна пошта'
           keyboardType='email-address'
           value={this.props.email}
+          maxLength={150}
           onChangeText={this.props.setEmail}
         />
         <AuthInput
           placeholder='Пароль'
           password
           value={this.props.password}
+          maxLength={50}
           onChangeText={this.props.setPassword}
         />
         <AuthInput
           placeholder='Повторіть пароль'
           password
           value={this.props.confirm}
+          maxLength={50}
           onChangeText={this.props.setConfirm}
         />
-        <Button onPress={() => this.onClick()} text='Зареєструватись' />
+        <Button loading={this.props.loading} onPress={() => this.onClick()} text='Зареєструватись' />
         <Link onPress={Actions.login} text='Увійти' />
       </View>
     )
   }
 }
 
-const mapStateToProps = ({signup}) => ({...signup})
+const mapStateToProps = ({signup, student}) => ({
+  ...signup,
+  loading: student.startSignup
+})
 const mapDispatchToProps =  dispatch => ({
   setEmail: data => dispatch(setEmail(data)),
   setPassword: data => dispatch(setPassword(data)),

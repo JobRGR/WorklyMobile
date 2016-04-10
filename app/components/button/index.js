@@ -1,17 +1,33 @@
 import React, {Component, Text, View, TouchableHighlight} from 'react-native'
+import Spinner from 'react-native-spinkit'
 import styles from './button.styles'
 
-class Link extends Component {
+
+class Button extends Component {
+
+  button() {
+    return (
+      <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
+        <Text style={styles.button}>{this.props.text}</Text>
+      </TouchableHighlight>
+    )
+  }
+
+  loading() {
+    return (
+      <View style={styles.spinnerContainer}>
+        <Spinner style={styles.spinner} size={55} type='ThreeBounce' isVisible={true} color='#ffffff' />
+      </View>
+    )
+  }
 
   render() {
     return (
       <View>
-        <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
-          <Text style={styles.button}>{this.props.text}</Text>
-        </TouchableHighlight>
+        {this.props.loading ? this.loading() : this.button()}
       </View>
     )
   }
 }
 
-export default Link
+export default Button
