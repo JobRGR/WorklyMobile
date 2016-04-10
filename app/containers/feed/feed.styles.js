@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 15,
     padding: 3
+  },
+
+  spinner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

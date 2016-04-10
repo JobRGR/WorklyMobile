@@ -33,7 +33,7 @@ class SignUp extends Component {
       <View style={styles.container}>
         <Logo />
         <AuthInput
-          placeholder="Ім'я Прізвище"
+          placeholder="Ім'я та Прізвище"
           value={this.props.name}
           onChangeText={this.props.setName}
         />

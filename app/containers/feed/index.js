@@ -3,12 +3,15 @@ import React, {
   PropTypes,
   Text,
   ScrollView,
+  View,
   Image,
   TouchableHighlight
 } from 'react-native'
 import {connect} from 'react-redux'
+import Spinner from 'react-native-spinkit'
 import {fetchVacancies, updateCount} from '../../actions/vacancies'
 import VacancyItem from '../../components/vacancy_item'
+import {color} from '../../components/nav_bar/nav_bar.styles'
 import styles from './feed.styles'
 
 class Feed extends Component {
@@ -34,7 +37,15 @@ class Feed extends Component {
     )
   }
 
-  render() {
+  loading() {
+    return (
+      <View style={styles.spinner}>
+        <Spinner size={70} type='ThreeBounce' isVisible={true} color={color}/>
+      </View>
+    )
+  }
+
+  content() {
     return (
       <ScrollView style={styles.container}>
         {
@@ -44,10 +55,13 @@ class Feed extends Component {
             .map(vacancy => <VacancyItem vacancy={vacancy} key={vacancy._id} />)
         }
         {this.props.data.length > 0 && this.more()}
-        {this.props.loading && <Text>Loading</Text>}
         {this.props.error && <Text>Error</Text>}
       </ScrollView>
     )
+  }
+
+  render() {
+    return this.props.loading ? this.loading() : this.content()
   }
 }
 

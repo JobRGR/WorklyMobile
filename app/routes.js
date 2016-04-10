@@ -7,7 +7,7 @@ import Login from './containers/login'
 import Feed from './containers/feed'
 import Start from './containers/start'
 import {color} from './components/nav_bar/nav_bar.styles'
-import {NavBar, NavBarBack, NavBarLogout} from './components/nav_bar'
+import {NavBar, NavBarBack, NavBarLogout, NavBarAuth} from './components/nav_bar'
 
 class Routes extends Component {
 
@@ -20,7 +20,7 @@ class Routes extends Component {
           barStyle='light-content'
         />
         <Router>
-          <Schema name='auth' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarBack} />
+          <Schema name='auth' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarAuth} />
           <Schema name='default' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBar} />
           <Schema name='logout' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarLogout} dispatch={this.props.dispatch} />
 

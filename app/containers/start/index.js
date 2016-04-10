@@ -1,6 +1,6 @@
 import React, {Component, PropTypes, Text, View} from 'react-native'
 import {connect} from 'react-redux'
-import {fetchStudent} from '../../actions/student'
+import {fetchUser} from '../../actions/user'
 import Logo from '../../components/logo'
 import styles from './start.styles'
 
@@ -11,7 +11,7 @@ class Start extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchStudent())
+    this.props.dispatch(fetchUser())
   }
 
   render() {
