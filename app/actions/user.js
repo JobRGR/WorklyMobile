@@ -19,7 +19,7 @@ export let fetchUser = () => dispatch => {
     .fetchUser()
     .then(({status, data}) => {
       if (status != 200 || !(data.student || data.company)) {
-        throw new Error('Fetch Error')
+        throw data
       }
       dispatch({type: FETCH_USER, data})
       Actions.feed()
@@ -37,7 +37,7 @@ export let loginUser = body => dispatch => {
     .loginUser(body)
     .then(({status, data}) => {
       if (status != 200 || !(data.student || data.company)) {
-        throw new Error(data)
+        throw data
       }
       dispatch({type: LOGIN_USER, data})
       Actions.feed()

@@ -12,7 +12,7 @@ export let signupStudent = body => dispatch => {
     .signupStudent(body)
     .then(({status, data}) => {
       if (status != 200 || !data.student) {
-        throw new Error(data)
+        throw data
       }
       dispatch({type: SET_USER, data})
       Actions.feed()

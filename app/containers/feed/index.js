@@ -45,17 +45,26 @@ class Feed extends Component {
     )
   }
 
+  error() {
+    return (
+      <View style={styles.spinner}>
+        <Text style={styles.error}>Просимо пробачення за тимчасові проблеми</Text>
+        <Text style={styles.error}>Спробуйте пізніше ;(</Text>
+      </View>
+    )
+  }
+
   content() {
     return (
       <ScrollView style={styles.container}>
         {
-          this.props.data.length > 0
-          && this.props.data
+          this.props.data.length > 0 &&
+          this.props.data
             .filter((_, index) => index < this.props.count)
             .map(vacancy => <VacancyItem vacancy={vacancy} key={vacancy._id} />)
         }
+        {this.props.error && this.error()}
         {this.props.data.length > 0 && this.more()}
-        {this.props.error && <Text>Error</Text>}
       </ScrollView>
     )
   }
