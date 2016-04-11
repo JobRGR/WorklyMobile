@@ -6,7 +6,6 @@ export const LOGOUT_USER = 'LOGOUT_USER'
 
 export let logoutUser = body => dispatch => {
   dispatch({type: LOGOUT_USER})
-  ClientApi
-    .logout()
-    .then(_ => Actions.home())
+  Actions.home()
+  ClientApi.logout()
 }
