@@ -1,6 +1,6 @@
 import React, {Component, PropTypes, Text, View} from 'react-native'
 import {connect} from 'react-redux'
-import {fetchUser} from '../../actions/user'
+import {fetchUser} from '../../actions/start'
 import Logo from '../../components/logo'
 import styles from './start.styles'
 

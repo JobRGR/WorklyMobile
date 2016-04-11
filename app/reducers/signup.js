@@ -2,14 +2,19 @@ import {
   SET_SIGNUP_EMAIL,
   SET_SIGNUP_PASSWORD,
   SET_SIGNUP_CONFIRM,
-  SET_SIGNUP_NAME
+  SET_SIGNUP_NAME,
+  SIGNUP,
+  START_SIGNUP,
+  ERROR_SIGNUP
 } from '../actions/signup'
 
 let initialState = {
   email: '',
   name: '',
   confirm: '',
-  password: ''
+  password: '',
+  startSignup: false,
+  errorSignup: false
 }
 
 export default (state = initialState, action = {}) => {
@@ -33,6 +38,24 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         name: action.data
+      }
+    case START_SIGNUP:
+      return {
+        ...state,
+        startSignup: true,
+        errorSignup: false
+      }
+    case ERROR_SIGNUP:
+      return {
+        ...state,
+        startSignup: false,
+        errorSignup: true
+      }
+    case SIGNUP:
+      return {
+        ...state,
+        startSignup: false,
+        errorSignup: false
       }
     default:
       return state
