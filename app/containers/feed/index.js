@@ -12,6 +12,7 @@ import Spinner from 'react-native-spinkit'
 import {Actions} from 'react-native-redux-router'
 import {fetchVacancies, updateCount, setCurrent} from '../../actions/vacancies'
 import VacancyItem from '../../components/vacancy_item'
+import short from '../../tools/short'
 import {color} from '../../components/nav_bar/nav_bar.styles'
 import styles from './feed.styles'
 
@@ -33,7 +34,7 @@ class Feed extends Component {
 
   setCurrent(vacancy) {
     this.props.setCurrent(vacancy._id)
-    Actions.vacancy({title: vacancy.name})
+    Actions.vacancy({title: short(vacancy.name, 30)})
   }
 
   more() {

@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
 
+  about: {
+    lineHeight: 21
+  },
+
   image: {
     width: 60,
     height: 60,
