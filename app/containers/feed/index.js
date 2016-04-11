@@ -9,7 +9,8 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import Spinner from 'react-native-spinkit'
-import {fetchVacancies, updateCount} from '../../actions/vacancies'
+import {Actions} from 'react-native-redux-router'
+import {fetchVacancies, updateCount, setCurrent} from '../../actions/vacancies'
 import VacancyItem from '../../components/vacancy_item'
 import {color} from '../../components/nav_bar/nav_bar.styles'
 import styles from './feed.styles'
@@ -22,11 +23,17 @@ class Feed extends Component {
     loading: PropTypes.bool.isRequired,
     count: PropTypes.number.isRequired,
     error: PropTypes.bool.isRequired,
-    updateCount: PropTypes.func.isRequired
+    updateCount: PropTypes.func.isRequired,
+    setCurrent: PropTypes.func.isRequired
   }
 
   componentWillMount() {
     this.props.fetchVacancies()
+  }
+
+  setCurrent(vacancy) {
+    this.props.setCurrent(vacancy._id)
+    Actions.vacancy({title: vacancy.name})
   }
 
   more() {
@@ -61,7 +68,7 @@ class Feed extends Component {
           this.props.data.length > 0 &&
           this.props.data
             .filter((_, index) => index < this.props.count)
-            .map(vacancy => <VacancyItem vacancy={vacancy} key={vacancy._id} />)
+            .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
         }
         {this.props.error && this.error()}
         {this.props.data.length > 0 && this.more()}
@@ -77,7 +84,8 @@ class Feed extends Component {
 const mapStateToProps = ({vacancies}) => ({...vacancies})
 const mapDispatchToProps = dispatch => ({
   fetchVacancies: () => dispatch(fetchVacancies()),
-  updateCount: () => dispatch(updateCount)
+  updateCount: () => dispatch(updateCount),
+  setCurrent: data => dispatch(setCurrent(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed)
