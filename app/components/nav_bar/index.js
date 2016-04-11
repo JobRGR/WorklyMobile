@@ -1,8 +1,9 @@
-import React, {Component} from 'react-native'
+import React, {Component, Image, View, TouchableWithoutFeedback} from 'react-native'
 import NavigationBar from 'react-native-navbar'
 import {logoutUser} from '../../actions/user'
 import {Actions} from 'react-native-redux-router'
 import styles from './nav_bar.styles'
+import uri from './back.image'
 import {green as color} from '../base/color'
 
 
@@ -24,11 +25,13 @@ export class NavBarBack extends Component {
           title: this.props.title || 'Workly',
           tintColor: '#fff'
         }}
-        rightButton={{
-          title: 'Back',
-          tintColor: '#fff',
-          handler: this.props.onPrev || Actions.pop
-        }} />
+        leftButton={(
+          <View style={styles.backWrapper}>
+            <TouchableWithoutFeedback onPress={this.props.onPrev || Actions.pop}>
+              <Image source={{uri}} style={styles.back} />
+            </TouchableWithoutFeedback>
+           </View>
+        )} />
     )
   }
 }
@@ -45,11 +48,14 @@ export class NavBarAuth extends Component {
           title: this.props.title || 'Workly',
           tintColor: '#fff'
         }}
-        rightButton={{
-          title: 'Home',
-          tintColor: '#fff',
-          handler: Actions.home
-        }} />
+        leftButton={(
+          <View style={styles.backWrapper}>
+            <TouchableWithoutFeedback onPress={Actions.home}>
+              <Image source={{uri}} style={styles.back} />
+            </TouchableWithoutFeedback>
+           </View>
+        )}
+      />
     )
   }
 }
