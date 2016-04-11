@@ -11,10 +11,18 @@ export const SIGNUP = 'SIGNUP'
 export const START_SIGNUP = 'START_SIGNUP'
 export const ERROR_SIGNUP = 'ERROR_SIGNUP'
 
+export const STUDENT = 'STUDENT'
+export const COMPANY = 'COMPANY'
+export const SET_STUDENT = 'SET_STUDENT'
+export const SET_COMPANY = 'SET_COMPANY'
+
 export let setEmail = data => ({type: SET_SIGNUP_EMAIL, data})
 export let setPassword = data => ({type: SET_SIGNUP_PASSWORD, data})
 export let setConfirm = data => ({type: SET_SIGNUP_CONFIRM, data})
 export let setName = data => ({type: SET_SIGNUP_NAME, data})
+
+export let setStudent = {type: SET_STUDENT}
+export let setCompany = {type: SET_COMPANY}
 
 export let signupStudent = body => dispatch => {
   dispatch({type: START_SIGNUP})
@@ -22,6 +30,24 @@ export let signupStudent = body => dispatch => {
     .signupStudent(body)
     .then(({status, data}) => {
       if (status != 200 || !data.student) {
+        throw data
+      }
+      dispatch({type: SIGNUP})
+      dispatch({type: SET_USER, data})
+      Actions.feed()
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch({type: ERROR_SIGNUP})
+    })
+}
+
+export let signupCompany = body => dispatch => {
+  dispatch({type: START_SIGNUP})
+  ClientApi
+    .signupCompany(body)
+    .then(({status, data}) => {
+      if (status != 200 || !data.company) {
         throw data
       }
       dispatch({type: SIGNUP})

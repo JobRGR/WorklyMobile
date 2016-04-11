@@ -1,7 +1,7 @@
-import React, {Component, PropTypes, Text, View} from 'react-native'
+import React, {Component, PropTypes, Text, TouchableHighlight,  View} from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
-import {setEmail, setConfirm, setPassword, setName, signupStudent} from '../../actions/signup'
+import {setEmail, setConfirm, setPassword, setName, signupStudent, signupCompany, setStudent, setCompany, STUDENT} from '../../actions/signup'
 import AuthInput from '../../components/auth_input'
 import Logo from '../../components/logo'
 import Link from '../../components/link'
@@ -15,25 +15,39 @@ class SignUp extends Component {
     password: PropTypes.string.isRequired,
     confirm: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     startSignup: PropTypes.bool.isRequired,
     setEmail: PropTypes.func.isRequired,
     setPassword: PropTypes.func.isRequired,
     setConfirm: PropTypes.func.isRequired,
     setName: PropTypes.func.isRequired,
-    signupStudent: PropTypes.func.isRequired
+    signupStudent: PropTypes.func.isRequired,
+    signupCompany: PropTypes.func.isRequired,
+    setStudent: PropTypes.func.isRequired,
+    setCompany: PropTypes.func.isRequired
   }
 
   onClick() {
     const {email, name, password} = this.props
-    this.props.signupStudent({email, name, password})
+    const signUp = this.props.type == STUDENT ? this.props.signupStudent : this.props.signupCompany
+    signUp({email, name, password})
   }
 
   render() {
+    const isStudent = this.props.type == STUDENT
     return (
       <View style={styles.container}>
         <Logo />
+        <View style={styles.typeWrapper}>
+          <TouchableHighlight underlayColor='white' onPress={() => this.props.setStudent()}>
+            <Text style={[styles.type, isStudent && styles.typeActive]}>Студент</Text>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor='white' onPress={() => this.props.setCompany()}>
+            <Text style={[styles.type, !isStudent && styles.typeActive]}>Компанія</Text>
+          </TouchableHighlight>
+        </View>
         <AuthInput
-          placeholder="Ім'я та Прізвище"
+          placeholder={isStudent ? "Ім'я та Прізвище" : 'Назва компанії'}
           value={this.props.name}
           maxLength={150}
           onChangeText={this.props.setName}
@@ -66,15 +80,16 @@ class SignUp extends Component {
   }
 }
 
-const mapStateToProps = ({signup}) => ({
-  ...signup
-})
+const mapStateToProps = ({signup}) => signup
 const mapDispatchToProps =  dispatch => ({
   setEmail: data => dispatch(setEmail(data)),
   setPassword: data => dispatch(setPassword(data)),
   setConfirm: data => dispatch(setConfirm(data)),
   setName: data => dispatch(setName(data)),
-  signupStudent: data => dispatch(signupStudent(data))
+  signupStudent: data => dispatch(signupStudent(data)),
+  signupCompany: data => dispatch(signupCompany(data)),
+  setStudent: () => dispatch(setStudent),
+  setCompany: () => dispatch(setCompany)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

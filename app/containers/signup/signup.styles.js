@@ -15,6 +15,21 @@ const styles = StyleSheet.create({
     margin: 10
   },
 
+  typeWrapper: {
+    flexWrap: 'wrap',
+    flexDirection:'row'
+  },
+
+  type: {
+    margin: 10,
+    color: '#5a5b5f',
+    fontSize: 16
+  },
+
+  typeActive: {
+    color
+  },
+
   link: {
     textAlign: 'center',
     color,

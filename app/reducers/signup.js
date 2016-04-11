@@ -5,7 +5,11 @@ import {
   SET_SIGNUP_NAME,
   SIGNUP,
   START_SIGNUP,
-  ERROR_SIGNUP
+  ERROR_SIGNUP,
+  STUDENT,
+  SET_STUDENT,
+  COMPANY,
+  SET_COMPANY
 } from '../actions/signup'
 
 let initialState = {
@@ -13,6 +17,7 @@ let initialState = {
   name: '',
   confirm: '',
   password: '',
+  type: STUDENT,
   startSignup: false,
   errorSignup: false
 }
@@ -57,6 +62,10 @@ export default (state = initialState, action = {}) => {
         startSignup: false,
         errorSignup: false
       }
+    case SET_STUDENT:
+      return state.startSignup ? state : {...initialState, type: STUDENT}
+    case SET_COMPANY:
+      return state.startSignup ? state : {...initialState, type: COMPANY}
     default:
       return state
   }

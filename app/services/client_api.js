@@ -29,6 +29,14 @@ class ClientApi {
     })
   }
 
+  signupCompany(body) {
+    return request({
+      url: `${this.url}/company`,
+      method: 'post',
+      body
+    })
+  }
+
   logout() {
     return request({url: `${this.url}/logout`})
   }
