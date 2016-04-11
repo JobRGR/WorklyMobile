@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {color} from '../../components/nav_bar/nav_bar.styles'
+import {green as color} from '../../components/base/color'
 
 const styles = StyleSheet.create({
   container: {

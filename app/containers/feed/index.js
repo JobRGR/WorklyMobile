@@ -13,7 +13,7 @@ import {Actions} from 'react-native-redux-router'
 import {fetchVacancies, updateCount, setCurrent} from '../../actions/vacancies'
 import VacancyItem from '../../components/vacancy_item'
 import short from '../../tools/short'
-import {color} from '../../components/nav_bar/nav_bar.styles'
+import {green as color} from '../../components/base/color'
 import styles from './feed.styles'
 
 class Feed extends Component {

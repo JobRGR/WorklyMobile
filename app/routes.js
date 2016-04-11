@@ -7,7 +7,7 @@ import Login from './containers/login'
 import Feed from './containers/feed'
 import Vacancy from './containers/vacancy'
 import Start from './containers/start'
-import {color} from './components/nav_bar/nav_bar.styles'
+import {green as color} from './components/base/color'
 import {NavBar, NavBarBack, NavBarLogout, NavBarAuth} from './components/nav_bar'
 
 class Routes extends Component {

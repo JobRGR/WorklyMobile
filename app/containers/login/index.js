@@ -16,7 +16,8 @@ class Login extends Component {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     setEmail: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
+    emailError: PropTypes.bool.isRequired,
+    passwordError: PropTypes.bool.isRequired,
     setPassword: PropTypes.func.isRequired,
     loginUser: PropTypes.func.isRequired
   }
@@ -34,12 +35,14 @@ class Login extends Component {
           placeholder='Електронна пошта'
           keyboardType='email-address'
           maxLength={150}
+          error={this.props.emailError}
           onChangeText={this.props.setEmail}
           value={this.props.email} />
         <AuthInput
           placeholder='Пароль'
           password
           maxLength={50}
+          error={this.props.passwordError}
           onChangeText={this.props.setPassword}
           value={this.props.password} />
         <Button loading={this.props.loading} onPress={() => this.onClick()} text='Увійти' />

@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native'
-
-export const color = '#2bb673'
+import {green as backgroundColor} from '../base/color'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +11,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    backgroundColor: color,
+    backgroundColor,
     paddingTop: 4,
     paddingLeft: 6,
     paddingRight: 6,

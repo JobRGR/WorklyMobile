@@ -2,7 +2,8 @@ import React, {Component} from 'react-native'
 import NavigationBar from 'react-native-navbar'
 import {logoutUser} from '../../actions/user'
 import {Actions} from 'react-native-redux-router'
-import styles, {color} from './nav_bar.styles'
+import styles from './nav_bar.styles'
+import {green as color} from '../base/color'
 
 
 const statusBar = {

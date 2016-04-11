@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native'
-
-export const color = '#2bb673'
+import {green as backgroundColor} from '../base/color'
 
 const styles = StyleSheet.create({
   navBar: {
-    backgroundColor: color
+    backgroundColor
   }
 })
 
