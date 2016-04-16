@@ -50,6 +50,14 @@ class ClientApi {
   fetchStudent(id) {
     return ClientApi.request({url: `${this.url}/student/${id}`})
   }
+
+  searchVacancy(body) {
+    return ClientApi.request({
+      url: `${this.url}/vacancy-search`,
+      method: 'post',
+      body
+    })
+  }
 }
 
 export default new ClientApi()

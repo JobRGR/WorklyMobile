@@ -58,6 +58,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
     color: '#5a5b5f'
+  },
+
+  vacanciesWrapperTitle: {
+    color: '#5a5b5f',
+    fontSize: 18,
+    marginBottom: 5
+  },
+
+  vacancyWrapper: {
+    marginTop: 5,
+    marginBottom: 5
+  },
+
+  vacanciesWrapper: {
+    marginTop: 20,
+    marginBottom: 20
+  },
+
+  center: {
+    textAlign: 'center'
   }
 })
 

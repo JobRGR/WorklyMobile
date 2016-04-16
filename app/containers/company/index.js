@@ -8,7 +8,9 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import Spinner from 'react-native-spinkit'
+import {Actions} from 'react-native-redux-router'
 import short from '../../tools/short'
+import {setCurrent} from '../../actions/vacancies'
 import {green as color} from '../../components/base/color'
 import styles from './company.styles'
 
@@ -17,8 +19,17 @@ class Company extends Component {
   static propTypes = {
     startFetch: PropTypes.bool.isRequired,
     errorFetch: PropTypes.bool.isRequired,
-    data: PropTypes.object
+    data: PropTypes.object,
+    startFetchVacancy: PropTypes.bool.isRequired,
+    errorFetchVacancy: PropTypes.bool.isRequired,
+    vacancies: PropTypes.array,
+    setCurrent: PropTypes.func.isRequired
   };
+
+  toVacancy(id, title) {
+    this.props.setCurrent(id)
+    Actions.vacancy({title: short(title, 30)})
+  }
 
   company() {
     return (
@@ -35,14 +46,45 @@ class Company extends Component {
           {this.props.data.city && <Text style={styles.text}>Місто:  <Text style={styles.text}>{this.props.data.city.name}</Text></Text>}
         </View>
         <Text style={[styles.about, styles.text]}>{this.props.data.about}</Text>
+        {this.props.startFetchVacancy && this.loading()}
+        {this.props.vacancies && this.vacancies()}
+        {this.props.errorFetchVacancy && this.noVacancy()}
       </ScrollView>
     )
+  }
+
+  vacancies() {
+    return (
+      <View style={styles.vacanciesWrapper}>
+        {
+          this.props.vacancies.length
+          ? <Text style={styles.vacanciesWrapperTitle}>Вакансії у {this.props.data.name.name}</Text>
+          : this.noVacancy()
+        }
+        {
+          this.props.vacancies.map(({name, _id, city, createdAt}) => (
+            <View key={_id} style={styles.info}>
+              <Text style={styles.sub} onPress={() => this.toVacancy(_id, name)}>{short(name, 50)}</Text>
+              <View style={[styles.row, styles.vacancyWrapper]}>
+                <Text>{city.name}</Text>
+                <Text> | </Text>
+                <Text>{new Date(createdAt).toLocaleDateString()}</Text>
+              </View>
+            </View>
+          ))
+        }
+      </View>
+    )
+  }
+
+  noVacancy() {
+    return <Text style={[styles.vacanciesWrapperTitle, styles.center]}>У {this.props.data.name.name} нeмає вакансій</Text>
   }
 
   loading() {
     return (
       <View style={styles.spinner}>
-        <Spinner size={70} type='ThreeBounce' isVisible={true} color={color}/>
+        <Spinner size={70} type='ThreeBounce' isVisible={true} color={color} />
       </View>
     )
   }
@@ -64,5 +106,6 @@ class Company extends Component {
 }
 
 const mapStateToProps = ({company}) => company
+const mapDispatchToProps = dispatch => ({setCurrent: id => dispatch(setCurrent(id))})
 
-export default connect(mapStateToProps)(Company)
+export default connect(mapStateToProps, mapDispatchToProps)(Company)
