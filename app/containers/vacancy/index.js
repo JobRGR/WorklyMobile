@@ -9,15 +9,19 @@ import React, {
 import {connect} from 'react-redux'
 import Skills from '../../components/skills'
 import short from '../../tools/short'
+import {fetchCompany} from '../../actions/company'
 import styles from './vacancy.styles'
 
 class Vacancy extends Component {
 
   static propTypes = {
-    vacancy: PropTypes.object.isRequired
+    vacancy: PropTypes.object.isRequired,
+    fetchCompany: PropTypes.func.isRequired
   };
 
   render() {
+    let {name, _id: id} = this.props.vacancy.company
+    let {name: companyName} = name
     return (
       <ScrollView style={styles.container}>
         <View style={styles.row}>
@@ -25,7 +29,7 @@ class Vacancy extends Component {
           <View>
             <Text style={styles.title}>{short(this.props.vacancy.name, 30)}</Text>
             <View style={[styles.row, styles.subRow]}>
-              <Text style={styles.sub}>{this.props.vacancy.company.name.name}</Text>
+              <Text style={styles.sub} onPress={() => this.props.fetchCompany(id, companyName)}>{companyName}</Text>
               <Text style={styles.text}> | </Text>
               <Text style={styles.text}>{this.props.vacancy.city.name}</Text>
             </View>
@@ -39,5 +43,6 @@ class Vacancy extends Component {
 }
 
 const mapStateToProps = ({vacancies}) => ({vacancy: vacancies.current})
+const mapDispatchToProps =  dispatch => ({fetchCompany: (id, title) => dispatch(fetchCompany(id, title))})
 
-export default connect(mapStateToProps)(Vacancy)
+export default connect(mapStateToProps, mapDispatchToProps)(Vacancy)

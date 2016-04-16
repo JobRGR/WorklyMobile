@@ -1,20 +1,22 @@
 import request from '../tools/request'
 
 class ClientApi {
+  static request = request;
+
   constructor() {
     this.url = 'http://workly.herokuapp.com/api'
   }
 
   fetchVacancies() {
-    return request({url: `${this.url}/vacancy`})
+    return ClientApi.request({url: `${this.url}/vacancy`})
   }
 
   fetchUser() {
-    return request({url: `${this.url}/status`})
+    return ClientApi.request({url: `${this.url}/status`})
   }
 
   loginUser(body) {
-    return request({
+    return ClientApi.request({
       url: `${this.url}/login`,
       method: 'post',
       body
@@ -22,7 +24,7 @@ class ClientApi {
   }
 
   signupStudent(body) {
-    return request({
+    return ClientApi.request({
       url: `${this.url}/student`,
       method: 'post',
       body
@@ -30,7 +32,7 @@ class ClientApi {
   }
 
   signupCompany(body) {
-    return request({
+    return ClientApi.request({
       url: `${this.url}/company`,
       method: 'post',
       body
@@ -38,7 +40,15 @@ class ClientApi {
   }
 
   logout() {
-    return request({url: `${this.url}/logout`})
+    return ClientApi.request({url: `${this.url}/logout`})
+  }
+
+  fetchCompany(id) {
+    return ClientApi.request({url: `${this.url}/company/${id}`})
+  }
+
+  fetchStudent(id) {
+    return ClientApi.request({url: `${this.url}/student/${id}`})
   }
 }
 
