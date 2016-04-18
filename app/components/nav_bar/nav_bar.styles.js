@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
   back: {
     width: 14,
     height: 20
+  },
+
+  menu: {
+    top: 2,
+    width: 22,
+    height: 15
   }
 })
 

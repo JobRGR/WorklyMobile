@@ -1,9 +1,12 @@
-import React, {Component, Image, View, TouchableWithoutFeedback} from 'react-native'
+import React, {Component, Image, View, TouchableWithoutFeedback, PropTypes} from 'react-native'
 import NavigationBar from 'react-native-navbar'
-import {logoutUser} from '../../actions/user'
+import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
+import {logoutUser} from '../../actions/user'
+import {updateMenu} from '../../actions/menu'
 import styles from './nav_bar.styles'
-import uri from './back.image'
+import backImage from './back.image'
+import menuImage from './menu.image'
 import {green as color} from '../base/color'
 
 
@@ -28,7 +31,7 @@ export class NavBarBack extends Component {
         leftButton={(
           <View style={styles.backWrapper}>
             <TouchableWithoutFeedback onPress={this.props.onPrev || Actions.pop}>
-              <Image source={{uri}} style={styles.back} />
+              <Image source={{uri: backImage}} style={styles.back} />
             </TouchableWithoutFeedback>
            </View>
         )} />
@@ -51,7 +54,7 @@ export class NavBarAuth extends Component {
         leftButton={(
           <View style={styles.backWrapper}>
             <TouchableWithoutFeedback onPress={Actions.home}>
-              <Image source={{uri}} style={styles.back} />
+              <Image source={{uri: backImage}} style={styles.back} />
             </TouchableWithoutFeedback>
            </View>
         )}
@@ -77,7 +80,12 @@ export class NavBar extends Component {
   }
 }
 
-export class NavBarLogout extends Component {
+class NavBarLogoutComponent extends Component {
+  static propTypes = {
+    open: PropTypes.bool.isRequired,
+    openMenu: PropTypes.func.isRequired
+  };
+
   render() {
     return (
       <NavigationBar
@@ -93,7 +101,19 @@ export class NavBarLogout extends Component {
           title: 'Вихід',
           tintColor: '#fff',
           handler: () => this.props.dispatch(logoutUser())
-        }} />
+        }}
+        leftButton={(
+          <View style={styles.backWrapper}>
+            <TouchableWithoutFeedback onPress={() => this.props.openMenu(!this.props.open)}>
+              <Image source={{uri: menuImage}} style={styles.menu} />
+            </TouchableWithoutFeedback>
+          </View>
+        )} />
     )
   }
 }
+
+const mapStateToProps = ({menu}) => ({open: menu})
+const mapDispatchToProps = dispatch => ({openMenu: isOpen => dispatch(updateMenu(isOpen))})
+
+export let NavBarLogout = connect(mapStateToProps, mapDispatchToProps)(NavBarLogoutComponent)

@@ -9,6 +9,7 @@
     "react-native": "0.22.2",
     "react-native-navbar": "1.4.1",
     "react-native-redux-router": "A-gambit/react-native-redux-router",
+    "react-native-side-menu": "0.18.0",
     "react-native-spinkit": "0.0.8",
     "react-redux": "4.4.1",
     "redux": "3.3.1",

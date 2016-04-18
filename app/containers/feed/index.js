@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import Spinner from 'react-native-spinkit'
 import {Actions} from 'react-native-redux-router'
 import {fetchVacancies, updateCount, setCurrent} from '../../actions/vacancies'
+import SideBar from '../../components/side_bar'
 import VacancyItem from '../../components/vacancy_item'
 import short from '../../tools/short'
 import {green as color} from '../../components/base/color'
@@ -29,7 +30,7 @@ class Feed extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchVacancies()
+    (!this.props.data || !this.props.data.length) && this.props.fetchVacancies()
   }
 
   setCurrent(vacancy) {
@@ -55,25 +56,29 @@ class Feed extends Component {
 
   error() {
     return (
-      <View style={styles.spinner}>
-        <Text style={styles.error}>Просимо пробачення за тимчасові проблеми</Text>
-        <Text style={styles.error}>Спробуйте пізніше ;(</Text>
-      </View>
+      <SideBar>
+        <View style={styles.spinner}>
+          <Text style={styles.error}>Просимо пробачення за тимчасові проблеми</Text>
+          <Text style={styles.error}>Спробуйте пізніше ;(</Text>
+        </View>
+      </SideBar>
     )
   }
 
   content() {
     return (
-      <ScrollView style={styles.container}>
-        {
-          this.props.data.length > 0 &&
-          this.props.data
-            .filter((_, index) => index < this.props.count)
-            .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
-        }
-        {this.props.error && this.error()}
-        {this.props.data.length > 0 && this.more()}
-      </ScrollView>
+      <SideBar>
+        <ScrollView style={styles.container}>
+          {
+            this.props.data.length > 0 &&
+            this.props.data
+              .filter((_, index) => index < this.props.count)
+              .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
+          }
+          {this.props.error && this.error()}
+          {this.props.data.length > 0 && this.more()}
+        </ScrollView>
+      </SideBar>
     )
   }
 
