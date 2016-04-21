@@ -9,6 +9,11 @@ export const START_FETCH_COMPANY_VACANCIES = 'START_FETCH_COMPANY_VACANCIES'
 export const ERROR_FETCH_COMPANY_VACANCIES = 'ERROR_FETCH_COMPANY_VACANCIES'
 export const FETCH_COMPANY_VACANCIES = 'FETCH_COMPANY_VACANCIES'
 
+export let setCompany = data => dispatch => {
+  dispatch({type: FETCH_COMPANY, data})
+  fetchVacancies(data.name.name, dispatch)
+}
+
 export let fetchCompany = (id, title) => async dispatch => {
   dispatch({type: START_FETCH_COMPANY})
   Actions.company({title})
@@ -17,8 +22,7 @@ export let fetchCompany = (id, title) => async dispatch => {
     if (status != 200 || !data.company) {
       throw data
     }
-    dispatch({type: FETCH_COMPANY, data: data.company})
-    fetchVacancies(title, dispatch)
+    setCompany(data.company)(dispatch)
   }
   catch (err) {
     console.log(err)

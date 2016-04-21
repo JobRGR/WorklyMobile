@@ -9,35 +9,36 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
-import {fetchVacancies, updateCount, setCurrent} from '../../actions/vacancies'
+import {setCompany} from '../../actions/company'
+import {fetchCompanies, updateCount} from '../../actions/companies'
 import Error from '../../components/error'
 import Loading from '../../components/loading'
 import SideBar from '../../components/side_bar'
 import More from '../../components/more'
-import VacancyItem from '../../components/vacancy_item'
+import CompanyItem from '../../components/company_item'
 import short from '../../tools/short'
 import {green as color} from '../../components/base/color'
-import styles from './feed.styles'
+import styles from '../feed/feed.styles'
 
-class Feed extends Component {
+class CompanyFeed extends Component {
 
   static propTypes = {
-    fetchVacancies: PropTypes.func.isRequired,
+    fetchCompanies: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     count: PropTypes.number.isRequired,
     error: PropTypes.bool.isRequired,
     updateCount: PropTypes.func.isRequired,
-    setCurrent: PropTypes.func.isRequired
+    setCompany: PropTypes.func.isRequired
   }
 
   componentWillMount() {
-    (!this.props.data || !this.props.data.length) && this.props.fetchVacancies()
+    (!this.props.data || !this.props.data.length) && this.props.fetchCompanies()
   }
 
-  setCurrent(vacancy) {
-    this.props.setCurrent(vacancy._id)
-    Actions.vacancy({title: short(vacancy.name, 30)})
+  setCurrent(company) {
+    this.props.setCompany(company)
+    Actions.company({title: short(company.name.name, 30)})
   }
 
   content() {
@@ -49,7 +50,7 @@ class Feed extends Component {
             this.props.data.length > 0 &&
             this.props.data
               .filter((_, index) => index < this.props.count)
-              .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
+              .map(company => <CompanyItem onPress={() => this.setCurrent(company)} company={company} key={company._id} />)
           }
           {this.props.error && <Error />}
           {!this.props.error && this.props.data.length > 0 && <More updateCount={this.props.updateCount} />}
@@ -63,11 +64,11 @@ class Feed extends Component {
   }
 }
 
-const mapStateToProps = ({vacancies}) => vacancies
+const mapStateToProps = ({companies}) => companies
 const mapDispatchToProps = dispatch => ({
-  fetchVacancies: () => dispatch(fetchVacancies()),
+  fetchCompanies: () => dispatch(fetchCompanies()),
   updateCount: () => dispatch(updateCount),
-  setCurrent: data => dispatch(setCurrent(data))
+  setCompany: data => dispatch(setCompany(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed)
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyFeed)

@@ -11,6 +11,14 @@ class ClientApi {
     return ClientApi.request({url: `${this.url}/vacancy`})
   }
 
+  fetchCompanies() {
+    return ClientApi.request({url: `${this.url}/company`})
+  }
+
+  fetchStudents() {
+    return ClientApi.request({url: `${this.url}/student`})
+  }
+
   fetchUser() {
     return ClientApi.request({url: `${this.url}/status`})
   }
