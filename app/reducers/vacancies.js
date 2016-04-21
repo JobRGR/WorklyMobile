@@ -3,7 +3,7 @@ import {
   START_FETCH_VACANCIES,
   ERROR_FETCH_VACANCIES,
   SET_CURRENT_VACANCY,
-  UPDATE_COUNT
+  UPDATE_COUNT_VACANCIES
 } from '../actions/vacancies'
 
 const count = 15
@@ -43,7 +43,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         current
       }
-    case UPDATE_COUNT:
+    case UPDATE_COUNT_VACANCIES:
       return {
         ...state,
         count: state.count + count
