@@ -47,12 +47,6 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
 
-  spinner: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
   error: {
     fontSize: 14,
     textAlign: 'center',

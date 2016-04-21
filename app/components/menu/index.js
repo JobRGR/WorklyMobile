@@ -24,9 +24,6 @@ class Menu extends Component {
 
   getAvatar() {
     const {avatar, name} = this.props.student || this.props.company
-    if (avatar) {
-      return <Image source={{uri: avatar}} style={styles.avatar}/>
-    }
     const text = name
       .trim()
       .split(' ')
@@ -34,11 +31,13 @@ class Menu extends Component {
       .map(x => x.charAt(0))
       .join('')
       .toUpperCase()
-    return (
-      <View style={styles.avatar}>
-        <Text style={styles.avatarText}>{text}</Text>
-      </View>
-    )
+    return avatar
+      ? <Image source={{uri: avatar}} style={styles.avatar}/>
+      : (
+        <View style={styles.avatar}>
+          <Text style={styles.avatarText}>{text}</Text>
+        </View>
+      )
   }
 
   move(page) {
@@ -49,10 +48,13 @@ class Menu extends Component {
   render() {
     return (
       <ScrollView scrollsToTop={false} style={styles.menu}>
-        <View style={styles.avatarContainer}>
-          {this.getAvatar()}
-          <Text style={styles.name}>{this.props.student.name || this.props.company.name}</Text>
-        </View>
+        {
+          (this.props.student || this.props.company) &&
+          <View style={styles.avatarContainer}>
+            {this.getAvatar()}
+            <Text style={styles.name}>{this.props.student.name || this.props.company.name}</Text>
+          </View>
+        }
 
         <View style={styles.linkWrapper}>
           <Link

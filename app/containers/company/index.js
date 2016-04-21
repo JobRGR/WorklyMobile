@@ -7,11 +7,11 @@ import React, {
   Image
 } from 'react-native'
 import {connect} from 'react-redux'
-import Spinner from 'react-native-spinkit'
 import {Actions} from 'react-native-redux-router'
 import short from '../../tools/short'
 import {setCurrent} from '../../actions/vacancies'
-import {green as color} from '../../components/base/color'
+import Error from '../../components/error'
+import Loading from '../../components/loading'
 import styles from './company.styles'
 
 class Company extends Component {
@@ -46,7 +46,7 @@ class Company extends Component {
           {this.props.data.city && <Text style={styles.text}>Місто:  <Text style={styles.text}>{this.props.data.city.name}</Text></Text>}
         </View>
         <Text style={[styles.about, styles.text]}>{this.props.data.about}</Text>
-        {this.props.startFetchVacancy && this.loading()}
+        {this.props.startFetchVacancy && <Loading />}
         {this.props.vacancies && this.vacancies()}
         {this.props.errorFetchVacancy && this.noVacancy()}
       </ScrollView>
@@ -81,26 +81,9 @@ class Company extends Component {
     return <Text style={[styles.vacanciesWrapperTitle, styles.center]}>У {this.props.data.name.name} нeмає вакансій</Text>
   }
 
-  loading() {
-    return (
-      <View style={styles.spinner}>
-        <Spinner size={70} type='ThreeBounce' isVisible={true} color={color} />
-      </View>
-    )
-  }
-
-  error() {
-    return (
-      <View style={styles.spinner}>
-        <Text style={styles.error}>Просимо пробачення за тимчасові проблеми</Text>
-        <Text style={styles.error}>Спробуйте пізніше ;(</Text>
-      </View>
-    )
-  }
-
   render() {
-    if (this.props.errorFetch) return this.error()
-    if (this.props.startFetch) return this.loading()
+    if (this.props.errorFetch) return <Error />
+    if (this.props.startFetch) return <Loading />
     return this.company()
   }
 }
