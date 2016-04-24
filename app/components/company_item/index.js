@@ -1,5 +1,6 @@
 import React, {Component, Text, View, Image, TouchableHighlight} from 'react-native'
 import short from '../../tools/short'
+import Avatar from '../avatar'
 import styles from '../vacancy_item/vacancy_item.styles'
 
 class CompanyItem extends Component {
@@ -9,7 +10,7 @@ class CompanyItem extends Component {
       <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
         <View style={styles.container}>
           <View style={styles.row}>
-            <Image source={{uri: `${this.props.company.avatar}?${Math.random()}`}} style={styles.image} />
+            <Avatar company={this.props.company} />
             <View>
               <Text style={styles.title}>{short(this.props.company.name.name, 30)}</Text>
               <View style={[styles.row, styles.subRow]}>

@@ -27,14 +27,6 @@ const styles = StyleSheet.create({
     lineHeight: 21
   },
 
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginRight: 15,
-    marginBottom: 10
-  },
-
   subRow: {
     marginTop: 5,
     marginBottom: 5

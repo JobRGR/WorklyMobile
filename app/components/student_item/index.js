@@ -1,26 +1,9 @@
 import React, {Component, Text, View, Image, TouchableHighlight} from 'react-native'
 import short from '../../tools/short'
+import Avatar from '../avatar'
 import styles from './student.styles'
 
 class CompanyItem extends Component {
-
-  getAvatar() {
-    const {avatar, name} = this.props.student
-    const text = name
-      .trim()
-      .split(' ')
-      .slice(0, 2)
-      .map(x => x.charAt(0))
-      .join('')
-      .toUpperCase()
-    return avatar
-      ? <Image source={{uri: `${this.props.student.avatar}?${Math.random()}`}} style={styles.image} />
-      : (
-      <View style={[styles.avatar, styles.image]}>
-        <Text style={styles.avatarText}>{text}</Text>
-      </View>
-    )
-  }
 
   getPosition() {
     const {experiences} = this.props.student
@@ -38,7 +21,7 @@ class CompanyItem extends Component {
       <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
         <View style={styles.container}>
           <View style={styles.row}>
-            {this.getAvatar()}
+            <Avatar student={this.props.student} />
             <View>
               <Text style={styles.title}>{short(this.props.student.name, 30)}</Text>
               <View style={[styles.row, styles.subRow]}>

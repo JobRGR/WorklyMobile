@@ -10,6 +10,7 @@ import {connect} from 'react-redux'
 import Skills from '../../components/skills'
 import short from '../../tools/short'
 import {fetchCompany} from '../../actions/company'
+import Avatar from '../../components/avatar'
 import styles from './vacancy.styles'
 
 class Vacancy extends Component {
@@ -25,7 +26,7 @@ class Vacancy extends Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.row}>
-          <Image source={{uri: `${this.props.vacancy.company.avatar}?${Math.random()}`}} style={styles.image} />
+          <Avatar company={this.props.vacancy.company} />
           <View>
             <Text style={styles.title}>{short(this.props.vacancy.name, 30)}</Text>
             <View style={[styles.row, styles.subRow]}>

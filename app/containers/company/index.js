@@ -11,6 +11,7 @@ import {Actions} from 'react-native-redux-router'
 import short from '../../tools/short'
 import {setCurrent} from '../../actions/vacancies'
 import Error from '../../components/error'
+import Avatar from '../../components/avatar'
 import Loading from '../../components/loading'
 import styles from './company.styles'
 
@@ -35,7 +36,7 @@ class Company extends Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.row}>
-          <Image source={{uri: `${this.props.data.avatar}?${Math.random()}`}} style={styles.image} />
+          <Avatar company={this.props.data} />
           <View>
             <Text style={styles.title}>{short(this.props.data.name.name, 30)}</Text>
           </View>

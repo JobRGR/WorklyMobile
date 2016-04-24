@@ -9,6 +9,7 @@ import React, {
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
 import Link from '../link'
+import Avatar from '../avatar'
 import {updateMenu} from '../../actions/menu'
 import styles from './menu.styles'
 
@@ -22,24 +23,6 @@ class Menu extends Component {
     updateMenu: PropTypes.func.isRequired
   }
 
-  getAvatar() {
-    const {avatar, name} = this.props.student || this.props.company
-    const text = name
-      .trim()
-      .split(' ')
-      .slice(0, 2)
-      .map(x => x.charAt(0))
-      .join('')
-      .toUpperCase()
-    return avatar
-      ? <Image source={{uri: avatar}} style={styles.avatar}/>
-      : (
-        <View style={styles.avatar}>
-          <Text style={styles.avatarText}>{text}</Text>
-        </View>
-      )
-  }
-
   move(page) {
     this.props.updateMenu()
     page && page != this.props.currentRoute && Actions[page]()
@@ -48,10 +31,11 @@ class Menu extends Component {
   render() {
     return (
       <ScrollView scrollsToTop={false} style={styles.menu}>
+
         {
           (this.props.student || this.props.company) &&
           <View style={styles.avatarContainer}>
-            {this.getAvatar()}
+            <Avatar student={this.props.student} company={this.props.company} white />
             <Text style={styles.name}>{this.props.student.name || this.props.company.name}</Text>
           </View>
         }
