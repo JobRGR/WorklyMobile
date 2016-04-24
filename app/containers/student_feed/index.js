@@ -35,8 +35,8 @@ class StudentFeed extends Component {
   }
 
   setCurrent(student) {
-    this.props.setStudent(student)
-    //Actions.student({title: short(student.name, 30)})
+    this.props.setStudent(student._id)
+    Actions.student({title: short(student.name, 30)})
   }
 
   content() {

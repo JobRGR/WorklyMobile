@@ -1,22 +1,13 @@
 import React, {Component, Text, View, Image, TouchableHighlight} from 'react-native'
 import short from '../../tools/short'
 import Avatar from '../avatar'
+import getPosition from '../../tools/get_position'
 import styles from './student.styles'
 
 class CompanyItem extends Component {
 
-  getPosition() {
-    const {experiences} = this.props.student
-    if (!experiences || !Array.isArray(experiences) || !experiences.length) {
-      return null
-    }
-    const {position} = experiences[experiences.length - 1]
-    return !position || !position.name ? null : position.name
-  }
-
-
   render() {
-    const position = this.getPosition()
+    const position = getPosition(this.props.student)
     return (
       <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
         <View style={styles.container}>

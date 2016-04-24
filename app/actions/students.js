@@ -5,10 +5,10 @@ export const START_FETCH_STUDENTS = 'START_FETCH_STUDENTS'
 export const ERROR_FETCH_STUDENTS = 'ERROR_FETCH_STUDENTS'
 export const UPDATE_COUNT_STUDENTS = 'UPDATE_COUNT_STUDENTS'
 
-export const SET_CURRENT_STUDENTS = 'SET_CURRENT_VACANCY'
+export const SET_CURRENT_STUDENT = 'SET_CURRENT_STUDENT'
 
 export let updateCount = ({type: UPDATE_COUNT_STUDENTS})
-export let setCurrent = data => ({type: SET_CURRENT_STUDENTS, data})
+export let setCurrent = data => ({type: SET_CURRENT_STUDENT, data})
 
 export let fetchStudents = () => dispatch => {
   dispatch({type: START_FETCH_STUDENTS})

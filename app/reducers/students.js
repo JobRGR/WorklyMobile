@@ -2,7 +2,7 @@ import {
   FETCH_STUDENTS,
   START_FETCH_STUDENTS,
   ERROR_FETCH_STUDENTS,
-  SET_CURRENT_STUDENTS,
+  SET_CURRENT_STUDENT,
   UPDATE_COUNT_STUDENTS
 } from '../actions/students'
 
@@ -37,7 +37,7 @@ export default (state = initialState, action = {}) => {
         error: true,
         loading: false
       }
-    case SET_CURRENT_STUDENTS:
+    case SET_CURRENT_STUDENT:
       let [current] = state.data.filter(({_id}) => _id == action.data)
       return {
         ...state,

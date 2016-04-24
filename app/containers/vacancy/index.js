@@ -11,7 +11,7 @@ import Skills from '../../components/skills'
 import short from '../../tools/short'
 import {fetchCompany} from '../../actions/company'
 import Avatar from '../../components/avatar'
-import styles from './vacancy.styles'
+import styles from '../company/company.styles'
 
 class Vacancy extends Component {
 
@@ -31,13 +31,13 @@ class Vacancy extends Component {
             <Text style={styles.title}>{short(this.props.vacancy.name, 30)}</Text>
             <View style={[styles.row, styles.subRow]}>
               <Text style={styles.sub} onPress={() => this.props.fetchCompany(id, companyName)}>{companyName}</Text>
-              <Text style={styles.text}> | </Text>
-              <Text style={styles.text}>{this.props.vacancy.city.name}</Text>
+              {this.props.vacancy.city && <Text style={styles.text}> | </Text>}
+              {this.props.vacancy.city && <Text style={styles.text}>{this.props.vacancy.city.name}</Text>}
             </View>
           </View>
         </View>
         <Text style={[styles.about, styles.text]}>{this.props.vacancy.about}</Text>
-        <Skills skills={this.props.vacancy.skills} />
+        {this.props.vacancy.skills && <Skills skills={this.props.vacancy.skills} />}
       </ScrollView>
     )
   }
