@@ -1,6 +1,6 @@
 import React, {Component, Text, View, Image, TouchableHighlight} from 'react-native'
 import short from '../../tools/short'
-import styles from './vacancy_item.styles'
+import styles from '../vacancy_item/vacancy_item.styles'
 
 class CompanyItem extends Component {
 
@@ -13,11 +13,15 @@ class CompanyItem extends Component {
             <View>
               <Text style={styles.title}>{short(this.props.company.name.name, 30)}</Text>
               <View style={[styles.row, styles.subRow]}>
-                <Text style={styles.sub}>{this.props.company.city.name}</Text>
+                {
+                  this.props.company.city
+                  ? <Text style={styles.sub}>{this.props.company.city.name}</Text>
+                  : <Text style={styles.sub}>{short(this.props.company.email, 40)}</Text>
+                }
               </View>
             </View>
           </View>
-          <Text style={styles.text}>{short(this.props.company.about, 100)}</Text>
+          {this.props.company.about && <Text style={styles.text}>{short(this.props.company.about, 100)}</Text>}
         </View>
       </TouchableHighlight>
     )

@@ -10,7 +10,7 @@ export const SET_CURRENT_STUDENTS = 'SET_CURRENT_VACANCY'
 export let updateCount = ({type: UPDATE_COUNT_STUDENTS})
 export let setCurrent = data => ({type: SET_CURRENT_STUDENTS, data})
 
-export let fetchVacancies = () => dispatch => {
+export let fetchStudents = () => dispatch => {
   dispatch({type: START_FETCH_STUDENTS})
   ClientApi
     .fetchStudents()

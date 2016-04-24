@@ -21,3 +21,6 @@ export let fetchCompanies = () => dispatch => {
       dispatch({type: ERROR_FETCH_COMPANIES})
     })
 }
+
+
+

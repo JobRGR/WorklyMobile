@@ -77,7 +77,7 @@ class Menu extends Component {
         <View style={styles.linkWrapper}>
           <Link
             withoutFeedBack
-            onPress={() => this.move()}
+            onPress={() => this.move('studentFeed')}
             style={styles.item}
             text='Студенти'
           />

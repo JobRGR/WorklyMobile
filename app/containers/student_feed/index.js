@@ -9,35 +9,34 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
-import {setCompany} from '../../actions/company'
-import {fetchCompanies, updateCount} from '../../actions/companies'
+import {fetchStudents, updateCount, setCurrent} from '../../actions/students'
 import Error from '../../components/error'
 import Loading from '../../components/loading'
 import SideBar from '../../components/side_bar'
 import More from '../../components/more'
-import CompanyItem from '../../components/company_item'
+import StudentItem from '../../components/student_item'
 import short from '../../tools/short'
 import styles from '../feed/feed.styles'
 
-class CompanyFeed extends Component {
+class StudentFeed extends Component {
 
   static propTypes = {
-    fetchCompanies: PropTypes.func.isRequired,
+    fetchStudents: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     count: PropTypes.number.isRequired,
     error: PropTypes.bool.isRequired,
     updateCount: PropTypes.func.isRequired,
-    setCompany: PropTypes.func.isRequired
+    setStudent: PropTypes.func.isRequired
   }
 
   componentWillMount() {
-    (!this.props.data || !this.props.data.length) && this.props.fetchCompanies()
+    (!this.props.data || !this.props.data.length) && this.props.fetchStudents()
   }
 
-  setCurrent(company) {
-    this.props.setCompany(company)
-    Actions.company({title: short(company.name.name, 30)})
+  setCurrent(student) {
+    this.props.setCompany(student)
+    //Actions.student({title: short(student.name, 30)})
   }
 
   content() {
@@ -49,7 +48,7 @@ class CompanyFeed extends Component {
             this.props.data.length > 0 &&
             this.props.data
               .filter((_, index) => index < this.props.count)
-              .map(company => <CompanyItem onPress={() => this.setCurrent(company)} company={company} key={company._id} />)
+              .map(student => <StudentItem onPress={() => this.setCurrent(student)} student={student} key={student._id} />)
           }
           {this.props.error && <Error />}
           {!this.props.error && this.props.data.length > 0 && <More updateCount={this.props.updateCount} />}
@@ -63,11 +62,11 @@ class CompanyFeed extends Component {
   }
 }
 
-const mapStateToProps = ({companies}) => companies
+const mapStateToProps = ({students}) => students
 const mapDispatchToProps = dispatch => ({
-  fetchCompanies: () => dispatch(fetchCompanies()),
+  fetchStudents: () => dispatch(fetchStudents()),
   updateCount: () => dispatch(updateCount),
-  setCompany: data => dispatch(setCompany(data))
+  setStudent: data => dispatch(setCurrent(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyFeed)
+export default connect(mapStateToProps, mapDispatchToProps)(StudentFeed)

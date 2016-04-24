@@ -4,13 +4,14 @@ import {Router, Route, Schema, Animations} from 'react-native-redux-router'
 import {green as color} from './components/base/color'
 import {NavBar, NavBarBack, NavBarLogout, NavBarAuth} from './components/nav_bar'
 import Home from './containers/home'
+import Start from './containers/start'
 import SignUp from './containers/signup'
 import Login from './containers/login'
 import Feed from './containers/feed'
-import Vacancy from './containers/vacancy'
-import Start from './containers/start'
-import Company from './containers/company'
 import CompanyFeed from './containers/company_feed'
+import StudentFeed from './containers/student_feed'
+import Vacancy from './containers/vacancy'
+import Company from './containers/company'
 
 class Routes extends Component {
 
@@ -34,6 +35,7 @@ class Routes extends Component {
           <Route name='login' component={Login} title='Login' schema='auth'  title='Вхід' />
           <Route name='feed' component={Feed} title='Вакансії' schema='logout' />
           <Route name='companyFeed' component={CompanyFeed} schema='logout' />
+          <Route name='studentFeed' component={StudentFeed} schema='logout' />
           <Route name='vacancy' component={Vacancy} schema='back' />
           <Route name='company' component={Company} schema='back' />
         </Router>
