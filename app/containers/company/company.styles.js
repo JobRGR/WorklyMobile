@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#5a5b5f',
     fontSize: 21,
-    marginTop: 20
+    marginTop: 10
   },
 
   text: {
@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection:'row'
+  },
+
+  subMargin: {
+    marginTop: 5,
+    marginBottom: 5
   },
 
   info: {

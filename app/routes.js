@@ -34,9 +34,11 @@ class Routes extends Component {
           <Route name='home' component={Home} title='Workly' />
           <Route name='signup' component={SignUp} title='SignUp' schema='auth' title='Реєстрація' />
           <Route name='login' component={Login} title='Login' schema='auth'  title='Вхід' />
+
           <Route name='feed' component={Feed} title='Вакансії' schema='logout' />
           <Route name='companyFeed' component={CompanyFeed} schema='logout' />
           <Route name='studentFeed' component={StudentFeed} schema='logout' />
+
           <Route name='vacancy' component={Vacancy} schema='back' />
           <Route name='student' component={Student} schema='back' />
           <Route name='company' component={Company} schema='back' />

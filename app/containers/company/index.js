@@ -13,6 +13,7 @@ import {setCurrent} from '../../actions/vacancies'
 import Error from '../../components/error'
 import Avatar from '../../components/avatar'
 import Loading from '../../components/loading'
+import formatDate from '../../tools/format_date'
 import styles from './company.styles'
 
 class Company extends Component {
@@ -69,7 +70,7 @@ class Company extends Component {
               <View style={[styles.row, styles.vacancyWrapper]}>
                 <Text>{city.name}</Text>
                 <Text> | </Text>
-                <Text>{new Date(createdAt).toLocaleDateString()}</Text>
+                <Text>{formatDate(createdAt)}</Text>
               </View>
             </View>
           ))
