@@ -47,7 +47,7 @@ class Company extends Component {
           {this.props.data.site && <Text style={styles.text}>Веб-сайт: <Text style={styles.sub}>{this.props.data.site}</Text></Text>}
           {this.props.data.city && <Text style={styles.text}>Місто:  <Text style={styles.text}>{this.props.data.city.name}</Text></Text>}
         </View>
-        <Text style={[styles.about, styles.text]}>{this.props.data.about}</Text>
+        {this.props.data.about && <Text style={[styles.about, styles.text]}>{this.props.data.about}</Text>}
         {this.props.startFetchVacancy && <Loading />}
         {this.props.vacancies && this.vacancies()}
         {this.props.errorFetchVacancy && this.noVacancy()}

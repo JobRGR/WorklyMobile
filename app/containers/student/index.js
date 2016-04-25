@@ -23,12 +23,29 @@ class Student extends Component {
   showExperience() {
     return (
       <View>
+        <Text style={styles.vacanciesWrapperTitle}>Досвід</Text>
         {
           this.props.student.experiences.map(({about, companyName, position, start, end}, index) => (
             <View style={styles.info} key={index}>
-              <Text style={styles.text}><Text style={styles.sub}>{position.name}</Text> в {companyName.name}</Text>
+              <Text style={styles.text}><Text style={styles.sub}>{position.name}</Text> у {companyName.name}</Text>
               <Text style={[styles.text, styles.subMargin]}>{formatDate(start)} - {formatDate(end)}</Text>
               {about && <Text style={styles.text}>{short(about, 350)}</Text>}
+            </View>
+          ))
+        }
+      </View>
+    )
+  }
+
+  showEducation() {
+    return (
+      <View>
+        <Text style={styles.vacanciesWrapperTitle}>Освіта</Text>
+        {
+          this.props.student.educations.map(({university, speciality, start, end}, index) => (
+            <View style={styles.info} key={index}>
+              <Text style={styles.text}><Text style={styles.sub}>{speciality.name}</Text> у {university.name}</Text>
+              <Text style={styles.text}>{formatDate(start)} - {formatDate(end)}</Text>
             </View>
           ))
         }
@@ -53,9 +70,12 @@ class Student extends Component {
           {this.props.student.email && <Text style={styles.text}>Email: <Text style={styles.sub}>{this.props.student.email}</Text></Text>}
           {this.props.student.telephone && <Text style={styles.text}>Телефон:  <Text style={styles.sub}>{this.props.student.telephone}</Text></Text>}
         </View>
-        <Text style={[styles.about, styles.text]}>{this.props.student.about}</Text>
-        {this.props.student.skills && <Skills skills={this.props.student.skills} />}
-        {this.props.student.experiences && this.props.student.experiences.length && this.showExperience()}
+        {this.props.student.about && <Text style={[styles.about, styles.text]}>{this.props.student.about}</Text>}
+        <View style={styles.vacanciesWrapper}>
+          {this.props.student.skills && <Skills skills={this.props.student.skills} />}
+        </View>
+        {this.props.student.experiences && this.props.student.experiences.length > 0 && this.showExperience()}
+        {this.props.student.educations && this.props.student.educations.length > 0 && this.showEducation()}
       </ScrollView>
     )
   }
