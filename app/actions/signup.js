@@ -111,7 +111,7 @@ function checkUser(body, dispatch, user) {
       !valid && dispatch({type: SET_SIGNUP_EMAIL_ERROR, data: 'Електронна пошта не валідна'})
     }
   })
-  if (valid && confirm != password) {
+  if (valid && body[confirm] != body[password]) {
     dispatch({type: SET_SIGNUP_CONFIRM_ERROR, data: 'Повтор паролю не вірний'})
     valid = false
   }

@@ -38,10 +38,9 @@ export default (state = initialState, action = {}) => {
         loading: false
       }
     case SET_CURRENT_STUDENT:
-      let [current] = state.data.filter(({_id}) => _id == action.data)
       return {
         ...state,
-        current
+        current: action.data
       }
     case UPDATE_COUNT_STUDENTS:
       return {

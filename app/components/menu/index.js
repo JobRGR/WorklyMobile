@@ -4,13 +4,17 @@ import React, {
   Image,
   Text,
   Component,
+  TouchableWithoutFeedback,
   PropTypes
 } from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
 import Link from '../link'
 import Avatar from '../avatar'
+import {setCompany} from '../../actions/company'
+import {setCurrent} from '../../actions/students'
 import {updateMenu} from '../../actions/menu'
+import short from '../../tools/short'
 import styles from './menu.styles'
 
 
@@ -20,12 +24,26 @@ class Menu extends Component {
     company: PropTypes.object,
     student: PropTypes.object,
     currentRoute: PropTypes.string.isRequired,
-    updateMenu: PropTypes.func.isRequired
+    updateMenu: PropTypes.func.isRequired,
+    setStudent: PropTypes.func.isRequired,
+    setCompany: PropTypes.func.isRequired
   }
 
   move(page) {
     this.props.updateMenu()
     page && page != this.props.currentRoute && Actions[page]()
+  }
+
+  toUserPage() {
+    const {company, student} = this.props
+    if (company) {
+      this.props.setCompany(company)
+      Actions.company({title: short(company.name.name, 30)})
+    }
+    else if (student) {
+      this.props.setStudent(student._id)
+      Actions.student({title: short(student.name, 30)})
+    }
   }
 
   render() {
@@ -34,10 +52,12 @@ class Menu extends Component {
 
         {
           (this.props.student || this.props.company) &&
-          <View style={styles.avatarContainer}>
-            <Avatar student={this.props.student} company={this.props.company} white />
-            <Text style={styles.name}>{this.props.student.name || this.props.company.name}</Text>
-          </View>
+          <TouchableWithoutFeedback onPress={() => this.toUserPage()}>
+            <View style={styles.avatarContainer}>
+              <Avatar student={this.props.student} company={this.props.company} white />
+              <Text style={styles.name}>{this.props.student.name || this.props.company.name}</Text>
+            </View>
+          </TouchableWithoutFeedback>
         }
 
         <View style={styles.linkWrapper}>
@@ -73,6 +93,10 @@ class Menu extends Component {
 }
 
 const mapStateToProps = ({user, routerReducer}) => ({...user, currentRoute: routerReducer.currentRoute})
-const mapDispatchToProps = dispatch => ({updateMenu: () => dispatch(updateMenu(false))})
+const mapDispatchToProps = dispatch => ({
+  updateMenu: () => dispatch(updateMenu(false)),
+  setStudent: data => dispatch(setCurrent(data)),
+  setCompany: data => dispatch(setCompany(data))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu)
