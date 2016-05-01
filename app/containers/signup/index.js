@@ -24,13 +24,17 @@ class SignUp extends Component {
     signupStudent: PropTypes.func.isRequired,
     signupCompany: PropTypes.func.isRequired,
     setStudent: PropTypes.func.isRequired,
-    setCompany: PropTypes.func.isRequired
+    setCompany: PropTypes.func.isRequired,
+    nameError: PropTypes.string,
+    passwordError: PropTypes.string,
+    emailError: PropTypes.string,
+    confirmError: PropTypes.string
   }
 
   onClick() {
-    const {email, name, password} = this.props
+    const {email, name, password, confirm} = this.props
     const signUp = this.props.type == STUDENT ? this.props.signupStudent : this.props.signupCompany
-    signUp({email, name, password})
+    signUp({email, name, password, confirm})
   }
 
   render() {
@@ -50,12 +54,14 @@ class SignUp extends Component {
           placeholder={isStudent ? "Ім'я та Прізвище" : 'Назва компанії'}
           value={this.props.name}
           maxLength={150}
+          error={this.props.nameError}
           onChangeText={this.props.setName}
         />
         <AuthInput
           placeholder='Електронна пошта'
           keyboardType='email-address'
           value={this.props.email}
+          error={this.props.emailError}
           maxLength={150}
           onChangeText={this.props.setEmail}
         />
@@ -63,6 +69,7 @@ class SignUp extends Component {
           placeholder='Пароль'
           password
           value={this.props.password}
+          error={this.props.passwordError}
           maxLength={50}
           onChangeText={this.props.setPassword}
         />
@@ -70,6 +77,7 @@ class SignUp extends Component {
           placeholder='Повторіть пароль'
           password
           value={this.props.confirm}
+          error={this.props.confirmError}
           maxLength={50}
           onChangeText={this.props.setConfirm}
         />

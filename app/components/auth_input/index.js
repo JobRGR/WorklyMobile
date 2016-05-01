@@ -1,4 +1,4 @@
-import React, {Component, View, TextInput} from 'react-native'
+import React, {Component, View, TextInput, Text} from 'react-native'
 import {connect} from 'react-redux'
 import styles from './auth_input.styles'
 
@@ -17,6 +17,7 @@ class AuthInput extends Component {
           onChangeText={this.props.onChangeText || (text => console.log(text))}
           value={this.props.value}
         />
+        {this.props.error && typeof this.props.error === 'string' && <Text style={styles.errorText}>{this.props.error}</Text>}
       </View>
     )
   }
