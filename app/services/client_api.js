@@ -66,6 +66,10 @@ class ClientApi {
       body
     })
   }
+
+  fetchCompetence(value) {
+    return ClientApi.request({url: `${this.url}/competence?value=${value}`})
+  }
 }
 
 export default new ClientApi()

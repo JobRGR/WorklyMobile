@@ -12,6 +12,7 @@ import CompanyFeed from './containers/company_feed'
 import StudentFeed from './containers/student_feed'
 import Vacancy from './containers/vacancy'
 import Student from './containers/student'
+import Competence from './containers/competence'
 import Company from './containers/company'
 
 class Routes extends Component {
@@ -42,6 +43,7 @@ class Routes extends Component {
           <Route name='vacancy' component={Vacancy} schema='back' />
           <Route name='student' component={Student} schema='back' />
           <Route name='company' component={Company} schema='back' />
+          <Route name='competence' component={Competence} schema='back' />
         </Router>
       </View>
     )

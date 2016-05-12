@@ -13,7 +13,7 @@ class Avatar extends Component {
       .join('')
       .toUpperCase()
     return avatar
-      ? <Image source={{uri: `${avatar}?${Math.random()}`}} style={styles.image} />
+      ? <Image source={{uri: avatar}} style={styles.image} />
       : (
       <View style={[styles.avatar, styles.image, this.props.white && styles.whiteAvatar]}>
         <Text style={[styles.avatarText, this.props.white && styles.whiteText]}>{text}</Text>

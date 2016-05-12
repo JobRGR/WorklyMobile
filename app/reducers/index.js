@@ -9,6 +9,7 @@ import company from './company'
 import menu from './menu'
 import companies from './companies'
 import students from './students'
+import competence from './competece'
 
 export default combineReducers({
   routerReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   vacancies,
   menu,
   companies,
-  students
+  students,
+  competence
 })
