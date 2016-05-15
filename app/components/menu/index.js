@@ -41,7 +41,7 @@ class Menu extends Component {
       Actions.company({title: short(company.name.name, 30)})
     }
     else if (student) {
-      this.props.setStudent(student._id)
+      this.props.setStudent(student)
       Actions.student({title: short(student.name, 30)})
     }
   }
