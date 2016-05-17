@@ -36,7 +36,7 @@ class Competence extends Component {
             <Text style={styles.title}>{capitalize(short(this.props.data.title, 30))}</Text>
           </View>
           <View>
-            {this.props.data.text && <Text>{this.props.data.text}</Text>}
+            {this.props.data.text && <Text style={[styles.text, styles.contentWidth]}>{short(this.props.data.text.replace(/\s*\[.*?\]\s*/g, ''), 10000)}</Text>}
           </View>
         </View>
       </ScrollView>

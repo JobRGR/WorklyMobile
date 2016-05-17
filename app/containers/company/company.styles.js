@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native'
 import {green as color} from '../../components/base/color'
+
+const window = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container: {
@@ -69,6 +71,11 @@ const styles = StyleSheet.create({
 
   center: {
     textAlign: 'center'
+  },
+  
+  contentWidth: {
+    width: window.width * 0.85,
+    paddingBottom: 30
   }
 })
 
