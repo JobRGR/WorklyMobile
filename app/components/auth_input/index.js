@@ -9,10 +9,11 @@ class AuthInput extends Component {
       <View>
         <TextInput
           keyboardType={this.props.keyboardType || 'default'}
-          style={[styles.input, this.props.error && styles.error]}
+          style={[styles.input, this.props.error && styles.error, this.props.style]}
           maxLength={this.props.maxLength || 150}
           secureTextEntry={this.props.password}
           placeholderTextColor='#A5A5A5'
+          multiline={this.props.multiline}
           placeholder={this.props.placeholder}
           onChangeText={this.props.onChangeText || (text => console.log(text))}
           value={this.props.value}

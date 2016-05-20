@@ -70,6 +70,14 @@ class ClientApi {
   fetchCompetence(value) {
     return ClientApi.request({url: `${this.url}/competence?value=${value}`})
   }
+  
+  createVacancy(body) {
+    return ClientApi.request({
+      url: `${this.url}/vacancy-add`,
+      method: 'post',
+      body
+    })
+  }
 }
 
 export default new ClientApi()

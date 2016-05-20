@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     borderColor: '#dfdfdf',
     margin: 5,
     color: '#5a5b5f',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    fontSize: 16
   },
 
   error: {

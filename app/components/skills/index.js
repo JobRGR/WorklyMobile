@@ -10,10 +10,14 @@ class Skills extends Component {
 
   static propTypes = {
     skills: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    disableLink: PropTypes.bool
   };
 
   handlePress(value) {
+    if (this.props.disableLink) {
+      return null
+    }
     this.props.dispatch(fetchCompetence(value))
     Actions.competence({title: capitalize(short(value, 30))})
   }
@@ -21,8 +25,8 @@ class Skills extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.skills.map(skill =>
-          <TouchableWithoutFeedback key={skill._id} onPress={() => this.handlePress(skill.name)}>
+        {this.props.skills.map((skill, index) =>
+          <TouchableWithoutFeedback key={`${skill._id}${index}`} onPress={() => this.handlePress(skill.name)}>
             <View style={styles.label}>
               <Text style={styles.text}>{skill.name}</Text>
             </View>

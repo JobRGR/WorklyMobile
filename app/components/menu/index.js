@@ -55,7 +55,8 @@ class Menu extends Component {
           <TouchableWithoutFeedback onPress={() => this.toUserPage()}>
             <View style={styles.avatarContainer}>
               <Avatar student={this.props.student} company={this.props.company} white />
-              <Text style={styles.name}>{this.props.student.name || this.props.company.name}</Text>
+              {this.props.student && <Text style={styles.name}>{this.props.student.name}</Text>}
+              {this.props.company && <Text style={styles.name}>{this.props.company.name.name}</Text>}
             </View>
           </TouchableWithoutFeedback>
         }
@@ -86,6 +87,18 @@ class Menu extends Component {
             text='Студенти'
           />
         </View>
+
+        {
+          this.props.company &&
+          <View style={styles.linkWrapper}>
+            <Link
+              withoutFeedBack
+              onPress={() => this.move('createVacancy')}
+              style={styles.item}
+              text='Створити вакансію'
+            />
+          </View>
+        }
 
       </ScrollView>
     );
