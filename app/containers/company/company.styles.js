@@ -46,6 +46,11 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
 
+  vacancy: {
+    marginTop: 5,
+    marginBottom: 5
+  },
+
   error: {
     fontSize: 14,
     textAlign: 'center',

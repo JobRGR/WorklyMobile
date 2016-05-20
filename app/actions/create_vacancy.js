@@ -1,12 +1,16 @@
 import ClientApi from '../services/client_api'
 import {Actions} from 'react-native-redux-router'
+import {addVacancy} from './vacancies'
 
 export const UPDATE_NAME = 'UPDATE_NAME'
 export const UPDATE_ABOUT = 'UPDATE_ABOUT'
-export const UPDATE_SKILLS = 'UPDATE_SKILLS'
+export const UPDATE_SKILL = 'UPDATE_SKILL'
 export const UPDATE_CITY = 'UPDATE_CITY'
 
 export const NAME_REQUIRED = 'NAME_REQUIRED'
+
+export const ADD_SKILL = 'ADD_SKILL'
+export const REMOVE_SKILL = 'REMOVE_SKILL'
 
 export const CREATE_VACANCY = 'CREATE_VACANCY'
 export const START_CREATE_VACANCY = 'START_CREATE_VACANCY'
@@ -14,10 +18,13 @@ export const ERROR_CREATE_VACANCY = 'ERROR_CREATE_VACANCY'
 
 export let updateName = data => ({type: UPDATE_NAME, data})
 export let updateAbout = data => ({type: UPDATE_ABOUT, data})
-export let updateSkills = data => ({type: UPDATE_SKILLS, data})
+export let updateSkill = data => ({type: UPDATE_SKILL, data})
 export let updateCity = data => ({type: UPDATE_CITY, data})
 
-export let createVacancy = body => async dispatch => {
+export let addSkill = data => ({type: ADD_SKILL, data})
+export let removeSkill = data => ({type: REMOVE_SKILL, data})
+
+export let createVacancy = (body, company) => async dispatch => {
   let isName = body.name && body.name.length
   if (!isName) {
     return dispatch({type: NAME_REQUIRED})
@@ -28,6 +35,7 @@ export let createVacancy = body => async dispatch => {
     if (status != 200 || !data) {
       throw data
     }
+    dispatch(addVacancy({...data.vacancy, company}))
     Actions.feed()
     dispatch({type: CREATE_VACANCY})
   }

@@ -65,7 +65,7 @@ class Company extends Component {
         }
         {
           this.props.vacancies.map(({name, _id, city, createdAt}) => (
-            <View key={_id} style={styles.info}>
+            <View key={_id} style={styles.vacancy}>
               <Text style={styles.sub} onPress={() => this.toVacancy(_id, name)}>{short(name, 50)}</Text>
               <View style={[styles.row, styles.vacancyWrapper]}>
                 <Text>{city.name}</Text>

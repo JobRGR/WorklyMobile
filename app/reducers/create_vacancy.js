@@ -2,17 +2,20 @@ import {
   UPDATE_NAME,
   UPDATE_CITY,
   UPDATE_ABOUT,
-  UPDATE_SKILLS,
+  UPDATE_SKILL,
   NAME_REQUIRED,
   CREATE_VACANCY,
   START_CREATE_VACANCY,
-  ERROR_CREATE_VACANCY
+  ERROR_CREATE_VACANCY,
+  ADD_SKILL,
+  REMOVE_SKILL
 } from '../actions/create_vacancy'
 
 let initialState = {
   name: '',
   about: '',
-  skills: '',
+  skill: '',
+  skills: [],
   city: '',
   loading: false,
   error: false,
@@ -37,10 +40,21 @@ export default (state = initialState, action = {}) => {
         ...state,
         about: action.data
       }
-    case UPDATE_SKILLS:
+    case UPDATE_SKILL:
       return {
         ...state,
-        skills: action.data
+        skill: action.data
+      }
+    case ADD_SKILL:
+      return {
+        ...state,
+        skill: '',
+        skills: [...state.skills, action.data]
+      }
+    case REMOVE_SKILL:
+      return {
+        ...state,
+        skills: state.skills.filter((_, index) => index != action.data)
       }
     case NAME_REQUIRED:
       return {

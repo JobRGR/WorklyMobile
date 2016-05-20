@@ -25,13 +25,17 @@ class Skills extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.skills.map((skill, index) =>
-          <TouchableWithoutFeedback key={`${skill._id}${index}`} onPress={() => this.handlePress(skill.name)}>
-            <View style={styles.label}>
-              <Text style={styles.text}>{skill.name}</Text>
-            </View>
-          </TouchableWithoutFeedback>
-        )}
+        {
+          this.props.skills
+            .filter(skill => skill.length)
+            .map((skill, index) =>
+              <TouchableWithoutFeedback key={`${skill._id}${index}`} onPress={() => this.handlePress(skill.name)}>
+                <View style={styles.label}>
+                  <Text style={styles.text}>{skill.name}</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            )
+        }
       </View>
     )
   }
