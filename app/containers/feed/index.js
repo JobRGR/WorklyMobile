@@ -51,6 +51,7 @@ class Feed extends Component {
               .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
           }
           {this.props.error && <Error />}
+          {!this.props.error && (this.props.data && this.props.data.length == 0) && <Error text='Ваканісій немає' />}
           {!this.props.error && this.props.data.length > this.props.count && <More updateCount={this.props.updateCount} />}
         </ScrollView>
       </SideBar>

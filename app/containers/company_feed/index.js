@@ -52,6 +52,7 @@ class CompanyFeed extends Component {
               .map(company => <CompanyItem onPress={() => this.setCurrent(company)} company={company} key={company._id} />)
           }
           {this.props.error && <Error />}
+          {!this.props.error && (this.props.data && this.props.data.length == 0) && <Error text='Немає зареєстрованих компаній' />}
           {!this.props.error && this.props.data.length > this.props.count && <More updateCount={this.props.updateCount} />}
         </ScrollView>
       </SideBar>

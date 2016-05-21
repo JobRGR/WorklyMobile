@@ -6,11 +6,13 @@ export const ERROR_FETCH_VACANCIES = 'ERROR_FETCH_VACANCIES'
 export const UPDATE_COUNT_VACANCIES = 'UPDATE_COUNT_VACANCIES'
 export const ADD_VACANCY = 'ADD_VACANCY'
 
+export const REMOVE_VACANCY = 'REMOVE_VACANCY'
 export const SET_CURRENT_VACANCY = 'SET_CURRENT_VACANCY'
 
 export let updateCount = ({type: UPDATE_COUNT_VACANCIES})
 export let setCurrent = data => ({type: SET_CURRENT_VACANCY, data})
 export let addVacancy = data => ({type: ADD_VACANCY, data})
+export let removeVacancy = data => ({type: REMOVE_VACANCY, data})
 
 export let fetchVacancies = () => dispatch => {
   dispatch({type: START_FETCH_VACANCIES})

@@ -78,6 +78,13 @@ class ClientApi {
       body
     })
   }
+
+  removeVacancy(id) {
+    return ClientApi.request({
+      url: `${this.url}/vacancy/${id}`,
+      method: 'delete'
+    })
+  }
 }
 
 export default new ClientApi()

@@ -1,4 +1,5 @@
 import ClientApi from '../services/client_api'
+import {removeVacancy as removeFeedVacancy} from './vacancies'
 
 export const START_FETCH_USER_COMPANY_VACANCIES = 'START_FETCH_USER_COMPANY_VACANCIES'
 export const ERROR_FETCH_USER_COMPANY_VACANCIES = 'ERROR_FETCH_USER_COMPANY_VACANCIES'
@@ -23,7 +24,11 @@ export let fetchVacancies = companyName => async dispatch => {
   }
 }
 
-export let removeVacancy = data => ({type: REMOVE_USER_COMPANY_VACANCY, data})
+export let removeVacancy = data => async dispatch => {
+  dispatch({type: REMOVE_USER_COMPANY_VACANCY, data})
+  dispatch(removeFeedVacancy(data))
+  ClientApi.removeVacancy(data)
+}
 
 export let addVacancy = data => ({type: ADD_USER_COMPANY_VACANCY, data})
 export let updateCount = ({type: UPDATE_USER_COMPANY_COUNT})

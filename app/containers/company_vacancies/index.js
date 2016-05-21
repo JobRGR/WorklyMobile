@@ -10,7 +10,7 @@ import React, {
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
 import {setCurrent} from '../../actions/vacancies'
-import {fetchVacancies, updateCount} from '../../actions/company_vacancies'
+import {fetchVacancies, updateCount, removeVacancy} from '../../actions/company_vacancies'
 import Error from '../../components/error'
 import Loading from '../../components/loading'
 import SideBar from '../../components/side_bar'
@@ -29,6 +29,7 @@ class CompanyVacancies extends Component {
     error: PropTypes.bool.isRequired,
     updateCount: PropTypes.func.isRequired,
     setCurrent: PropTypes.func.isRequired,
+    removeVacancy: PropTypes.func.isRequired,
     company: PropTypes.object.isRequired
   }
 
@@ -48,11 +49,20 @@ class CompanyVacancies extends Component {
           {
             !this.props.error &&
             this.props.vacancies &&
+            this.props.vacancies.length > 0 &&
             this.props.vacancies
               .filter((_, index) => index < this.props.count)
-              .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
+              .map(vacancy =>
+                <View key={vacancy._id}>
+                  <Text style={styles.remove} onPress={() => this.props.removeVacancy(vacancy._id)}>✕</Text>
+                  <View style={styles.vacancy}>
+                    <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} />
+                  </View>  
+                </View>
+              )
           }
           {this.props.error && <Error />}
+          {(this.props.vacancies && this.props.vacancies.length == 0) && <Error text='У вас не має вакасній' />}
           {
             !this.props.error
             && this.props.vacancies
@@ -76,7 +86,8 @@ const mapStateToProps = ({companyVacancies, user}) => ({
 const mapDispatchToProps = dispatch => ({
   fetchVacancies: companyName => dispatch(fetchVacancies(companyName)),
   updateCount: () => dispatch(updateCount),
-  setCurrent: data => dispatch(setCurrent(data))
+  setCurrent: data => dispatch(setCurrent(data)),
+  removeVacancy: data => dispatch(removeVacancy(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyVacancies)
