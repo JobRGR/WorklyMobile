@@ -5,7 +5,8 @@ import {
   SET_CURRENT_VACANCY,
   UPDATE_COUNT_VACANCIES,
   ADD_VACANCY,
-  REMOVE_VACANCY
+  REMOVE_VACANCY,
+  UPDATE_VACANCY
 } from '../actions/vacancies'
 
 const count = 15
@@ -59,6 +60,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         data: state.data.filter(({_id}) => _id != action.data)
+      }
+    case UPDATE_VACANCY:
+      const {id, data} = action.data
+      return {
+        ...state,
+        data: state.data.map(vacancy => vacancy._id == id ? {...vacancy, ...data} : vacancy)
       }
     default:
       return state

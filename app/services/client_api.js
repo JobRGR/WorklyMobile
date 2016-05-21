@@ -79,6 +79,14 @@ class ClientApi {
     })
   }
 
+  updateVacancy(id, body) {
+    return ClientApi.request({
+      url: `${this.url}/vacancy-update/${id}`,
+      method: 'put',
+      body
+    })
+  }
+
   removeVacancy(id) {
     return ClientApi.request({
       url: `${this.url}/vacancy/${id}`,

@@ -36,7 +36,18 @@ export let createVacancy = (body, company) => async dispatch => {
     if (status != 200 || !data) {
       throw data
     }
-    const vacancy = {...data.vacancy, company}
+    const vacancy = {
+      ...data.vacancy,
+      company,
+      city: {
+        _id: data.vacancy.city,
+        name: body.city
+      },
+      skills: body.skills.map((name, index) => ({
+        _id: data.vacancy.skills[index],
+        name
+      }))
+    }
     dispatch(addCompanyVacancy(vacancy))
     dispatch(addVacancy(vacancy))
     Actions.feed()

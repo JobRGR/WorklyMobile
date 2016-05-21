@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
 import {setCurrent} from '../../actions/vacancies'
 import {fetchVacancies, updateCount, removeVacancy} from '../../actions/company_vacancies'
+import {setVacancy} from '../../actions/edit_vacancy'
 import Error from '../../components/error'
 import Loading from '../../components/loading'
 import SideBar from '../../components/side_bar'
@@ -30,7 +31,8 @@ class CompanyVacancies extends Component {
     updateCount: PropTypes.func.isRequired,
     setCurrent: PropTypes.func.isRequired,
     removeVacancy: PropTypes.func.isRequired,
-    company: PropTypes.object.isRequired
+    company: PropTypes.object.isRequired,
+    setVacancy: PropTypes.func.isRequired
   }
 
   componentWillMount() {
@@ -39,7 +41,12 @@ class CompanyVacancies extends Component {
 
   setCurrent(vacancy) {
     this.props.setCurrent(vacancy._id)
-    Actions.vacancy({title: short(vacancy.name, 30)})
+    Actions.vacancy({title: short(vacancy.name, 25)})
+  }
+
+  editVacancy(vacancy) {
+    this.props.setVacancy(vacancy)
+    Actions.editVacancy()
   }
 
   content() {
@@ -54,6 +61,7 @@ class CompanyVacancies extends Component {
               .filter((_, index) => index < this.props.count)
               .map(vacancy =>
                 <View key={vacancy._id}>
+                  <Text style={styles.edit} onPress={() => this.editVacancy(vacancy)}>✎</Text>
                   <Text style={styles.remove} onPress={() => this.props.removeVacancy(vacancy._id)}>✕</Text>
                   <View style={styles.vacancy}>
                     <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} />
@@ -87,7 +95,8 @@ const mapDispatchToProps = dispatch => ({
   fetchVacancies: companyName => dispatch(fetchVacancies(companyName)),
   updateCount: () => dispatch(updateCount),
   setCurrent: data => dispatch(setCurrent(data)),
-  removeVacancy: data => dispatch(removeVacancy(data))
+  removeVacancy: data => dispatch(removeVacancy(data)),
+  setVacancy: data => dispatch(setVacancy(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyVacancies)

@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     marginTop: 10,
+    marginLeft: 5,
     marginBottom: 10
   },
 

@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native'
-import {red} from '../../components/base/color'
+import {red, green} from '../../components/base/color'
 
 const window = Dimensions.get('window')
 
@@ -17,8 +17,16 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 
+  edit: {
+    color: green,
+    fontSize: 24,
+    position: 'absolute',
+    left: window.width - 90,
+    marginTop: 5
+  },
+
   vacancy: {
-    width: window.width * 0.8
+    width: window.width * 0.70
   }
 })
 

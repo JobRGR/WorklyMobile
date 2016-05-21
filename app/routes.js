@@ -14,6 +14,7 @@ import Vacancy from './containers/vacancy'
 import Student from './containers/student'
 import Competence from './containers/competence'
 import CreateVacancy from './containers/create_vacancy'
+import EditVacancy from './containers/edit_vacancy'
 import Company from './containers/company'
 import CompanyVacancies from './containers/company_vacancies'
 
@@ -49,6 +50,7 @@ class Routes extends Component {
           <Route name='competence' component={Competence} schema='back' />
 
           <Route name='createVacancy' component={CreateVacancy} title='Створити вакансію' schema='back' />
+          <Route name='editVacancy' component={EditVacancy} title='Редагувати вакснію' schema='back' />
           <Route name='companyVacancies' component={CompanyVacancies} title='Мої вакансії' schema='logout' />
           
         </Router>
