@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     position: 'absolute',
     left: window.width - 60,
-    marginTop: 10
+    marginTop: 5
   },
 
   vacancy: {
