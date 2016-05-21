@@ -6,7 +6,8 @@ import {
   UPDATE_COUNT_VACANCIES,
   ADD_VACANCY,
   REMOVE_VACANCY,
-  UPDATE_VACANCY
+  UPDATE_VACANCY,
+  SET_VACANCY_SEARCH
 } from '../actions/vacancies'
 
 const count = 15
@@ -14,6 +15,7 @@ const count = 15
 let initialState = {
   data: [],
   count,
+  search: '',
   current: null,
   loading: false,
   error: false
@@ -23,6 +25,7 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_VACANCIES:
       return {
+        ...state,
         data: action.data,
         error: false,
         loading: false,
@@ -66,6 +69,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         data: state.data.map(vacancy => vacancy._id == id ? {...vacancy, ...data} : vacancy)
+      }
+    case SET_VACANCY_SEARCH:
+      return {
+        ...state,
+        search: action.data
       }
     default:
       return state

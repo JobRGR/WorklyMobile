@@ -11,6 +11,9 @@ export const SET_CURRENT_VACANCY = 'SET_CURRENT_VACANCY'
 
 export const UPDATE_VACANCY = 'UPDATE_VACANCY'
 
+export const SET_VACANCY_SEARCH = 'SET_VACANCY_SEARCH'
+
+export let setSearch = (data = '') => ({type: SET_VACANCY_SEARCH, data})
 export let updateCount = ({type: UPDATE_COUNT_VACANCIES})
 export let setCurrent = data => ({type: SET_CURRENT_VACANCY, data})
 export let addVacancy = data => ({type: ADD_VACANCY, data})

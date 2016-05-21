@@ -6,7 +6,9 @@ export const ERROR_FETCH_STUDENTS = 'ERROR_FETCH_STUDENTS'
 export const UPDATE_COUNT_STUDENTS = 'UPDATE_COUNT_STUDENTS'
 
 export const SET_CURRENT_STUDENT = 'SET_CURRENT_STUDENT'
+export const SET_STUDENT_SEARCH = 'SET_STUDENT_SEARCH'
 
+export let setSearch = (data = '') => ({type: SET_STUDENT_SEARCH, data})
 export let updateCount = ({type: UPDATE_COUNT_STUDENTS})
 export let setCurrent = data => ({type: SET_CURRENT_STUDENT, data})
 

@@ -1,0 +1,1 @@
+export default (value, search) => value.toLowerCase().includes(search.toLowerCase())
