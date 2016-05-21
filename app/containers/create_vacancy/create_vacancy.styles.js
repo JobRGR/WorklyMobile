@@ -51,6 +51,15 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexDirection:'row'
   },
+
+  rowInput: {
+    width: (window.width - 50) / 2
+  },
+
+  rowButton: {
+    width: (window.width - 50) / 2 - 15,
+    marginLeft: 10
+  }
 })
 
 export default styles

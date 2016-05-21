@@ -65,22 +65,24 @@ class CreateVacancy extends Component {
           style={styles.input}
           onChangeText={this.props.updateAbout}
           value={this.props.about}
-          style={[styles.input, {height: 100}]}
+          style={[styles.input, {height: 180}]}
           multiline
         />
-        
-        <AuthInput
-          placeholder='Навички'
-          maxLength={200}
-          style={styles.input}
-          onChangeText={this.props.updateSkill}
-          value={this.props.skill}
-        />
-        <Button
-          style={styles.input}
-          onPress={() => this.props.skill.length && this.props.addSkill(this.props.skill)}
-          text='Додати навичку'
-        />
+
+        <View style={styles.row}>
+          <AuthInput
+            placeholder='Навички'
+            maxLength={200}
+            style={styles.rowInput}
+            onChangeText={this.props.updateSkill}
+            value={this.props.skill}
+          />
+          <Button
+            style={styles.rowButton}
+            onPress={() => this.props.skill.length && this.props.addSkill(this.props.skill)}
+            text='Додати навичку'
+          />
+        </View>  
 
         {
           this.props.skills.length > 0 &&

@@ -15,6 +15,8 @@ import Student from './containers/student'
 import Competence from './containers/competence'
 import CreateVacancy from './containers/create_vacancy'
 import Company from './containers/company'
+import CompanyVacancies from './containers/company_vacancies'
+
 
 class Routes extends Component {
 
@@ -45,7 +47,9 @@ class Routes extends Component {
           <Route name='student' component={Student} schema='back' />
           <Route name='company' component={Company} schema='back' />
           <Route name='competence' component={Competence} schema='back' />
+
           <Route name='createVacancy' component={CreateVacancy} title='Створити вакансію' schema='back' />
+          <Route name='companyVacancies' component={CompanyVacancies} title='Мої вакансії' schema='logout' />
           
         </Router>
       </View>

@@ -1,6 +1,7 @@
 import ClientApi from '../services/client_api'
 import {Actions} from 'react-native-redux-router'
 import {addVacancy} from './vacancies'
+import {addVacancy as addCompanyVacancy} from './company_vacancies'
 
 export const UPDATE_NAME = 'UPDATE_NAME'
 export const UPDATE_ABOUT = 'UPDATE_ABOUT'
@@ -35,7 +36,9 @@ export let createVacancy = (body, company) => async dispatch => {
     if (status != 200 || !data) {
       throw data
     }
-    dispatch(addVacancy({...data.vacancy, company}))
+    const vacancy = {...data.vacancy, company}
+    dispatch(addCompanyVacancy(vacancy))
+    dispatch(addVacancy(vacancy))
     Actions.feed()
     dispatch({type: CREATE_VACANCY})
   }

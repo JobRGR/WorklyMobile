@@ -27,7 +27,7 @@ class Skills extends Component {
       <View style={styles.container}>
         {
           this.props.skills
-            .filter(skill => skill.length)
+            .filter(skill => skill.name.length)
             .map((skill, index) =>
               <TouchableWithoutFeedback key={`${skill._id}${index}`} onPress={() => this.handlePress(skill.name)}>
                 <View style={styles.label}>

@@ -100,6 +100,18 @@ class Menu extends Component {
           </View>
         }
 
+        {
+          this.props.company &&
+          <View style={styles.linkWrapper}>
+            <Link
+              withoutFeedBack
+              onPress={() => this.move('companyVacancies')}
+              style={styles.item}
+              text='Мої вакансії'
+            />
+          </View>
+        }
+
       </ScrollView>
     );
   }

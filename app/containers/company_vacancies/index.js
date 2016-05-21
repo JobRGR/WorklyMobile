@@ -9,29 +9,31 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
-import {fetchVacancies, updateCount, setCurrent} from '../../actions/vacancies'
+import {setCurrent} from '../../actions/vacancies'
+import {fetchVacancies, updateCount} from '../../actions/company_vacancies'
 import Error from '../../components/error'
 import Loading from '../../components/loading'
 import SideBar from '../../components/side_bar'
 import More from '../../components/more'
 import VacancyItem from '../../components/vacancy_item'
 import short from '../../tools/short'
-import styles from './feed.styles'
+import styles from './company_vacancies.styles'
 
-class Feed extends Component {
+class CompanyVacancies extends Component {
 
   static propTypes = {
     fetchVacancies: PropTypes.func.isRequired,
-    data: PropTypes.array.isRequired,
+    vacancies: PropTypes.array,
     loading: PropTypes.bool.isRequired,
     count: PropTypes.number.isRequired,
     error: PropTypes.bool.isRequired,
     updateCount: PropTypes.func.isRequired,
-    setCurrent: PropTypes.func.isRequired
+    setCurrent: PropTypes.func.isRequired,
+    company: PropTypes.object.isRequired
   }
 
   componentWillMount() {
-    (!this.props.data || !this.props.data.length) && this.props.fetchVacancies()
+    !this.props.vacancies && this.props.fetchVacancies(this.props.company.name.name)
   }
 
   setCurrent(vacancy) {
@@ -45,13 +47,18 @@ class Feed extends Component {
         <ScrollView style={styles.container}>
           {
             !this.props.error &&
-            this.props.data.length > 0 &&
-            this.props.data
+            this.props.vacancies &&
+            this.props.vacancies
               .filter((_, index) => index < this.props.count)
               .map(vacancy => <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} key={vacancy._id} />)
           }
           {this.props.error && <Error />}
-          {!this.props.error && this.props.data.length > this.props.count && <More updateCount={this.props.updateCount} />}
+          {
+            !this.props.error
+            && this.props.vacancies
+            && this.props.vacancies.length > this.props.count
+            && <More updateCount={this.props.updateCount} />
+          }
         </ScrollView>
       </SideBar>
     )
@@ -62,11 +69,14 @@ class Feed extends Component {
   }
 }
 
-const mapStateToProps = ({vacancies}) => vacancies
+const mapStateToProps = ({companyVacancies, user}) => ({
+  company: user.company,
+  ...companyVacancies
+})
 const mapDispatchToProps = dispatch => ({
-  fetchVacancies: () => dispatch(fetchVacancies()),
+  fetchVacancies: companyName => dispatch(fetchVacancies(companyName)),
   updateCount: () => dispatch(updateCount),
   setCurrent: data => dispatch(setCurrent(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed)
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyVacancies)
