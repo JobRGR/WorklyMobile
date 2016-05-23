@@ -117,3 +117,41 @@ const mapStateToProps = ({menu}) => ({open: menu})
 const mapDispatchToProps = dispatch => ({openMenu: isOpen => dispatch(updateMenu(isOpen))})
 
 export let NavBarLogout = connect(mapStateToProps, mapDispatchToProps)(NavBarLogoutComponent)
+
+
+
+class NavBarEditComponent extends Component {
+  static propTypes = {
+    student: PropTypes.object,
+    company: PropTypes.object
+  };
+  
+  render() {
+    return (
+      <NavigationBar
+        style={styles.navBar}
+        titleColor='#fff'
+        buttonsColor='white'
+        statusBar={statusBar}
+        title={{
+          title: this.props.title || 'Workly',
+          tintColor: '#fff'
+        }}
+        rightButton={{
+          title: 'Edit',
+          tintColor: '#fff',
+          handler: () => this.props.company ? Actions.editCompany() : Actions.editStudent()
+        }}
+        leftButton={(
+          <View style={styles.backWrapper}>
+            <TouchableWithoutFeedback onPress={this.props.onPrev || Actions.pop}>
+              <Image source={{uri: backImage}} style={styles.back} />
+            </TouchableWithoutFeedback>
+           </View>
+        )} />
+    )
+  }
+}
+
+
+export let NavBarEdit = connect(({user}) => user)(NavBarEditComponent)

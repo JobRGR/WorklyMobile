@@ -38,11 +38,11 @@ class Menu extends Component {
     const {company, student} = this.props
     if (company) {
       this.props.setCompany(company)
-      Actions.company({title: short(company.name.name, 30)})
+      Actions.userCompany({title: short(company.name.name, 30)})
     }
     else if (student) {
       this.props.setStudent(student)
-      Actions.student({title: short(student.name, 30)})
+      Actions.userStudent({title: short(student.name, 30)})
     }
   }
 

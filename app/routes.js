@@ -2,7 +2,7 @@ import React, {Component, View, StatusBar} from 'react-native'
 import {connect} from 'react-redux'
 import {Router, Route, Schema, Animations} from 'react-native-redux-router'
 import {green as color} from './components/base/color'
-import {NavBar, NavBarBack, NavBarLogout, NavBarAuth} from './components/nav_bar'
+import {NavBar, NavBarBack, NavBarLogout, NavBarAuth, NavBarEdit} from './components/nav_bar'
 import Home from './containers/home'
 import Start from './containers/start'
 import SignUp from './containers/signup'
@@ -16,7 +16,9 @@ import Competence from './containers/competence'
 import CreateVacancy from './containers/create_vacancy'
 import EditVacancy from './containers/edit_vacancy'
 import Company from './containers/company'
+import EditCompany from './containers/edit_company'
 import CompanyVacancies from './containers/company_vacancies'
+import EditStudent from './containers/edit_student'
 
 
 class Routes extends Component {
@@ -32,6 +34,7 @@ class Routes extends Component {
         <Router>
           <Schema name='auth' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarAuth} />
           <Schema name='back' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarBack} />
+          <Schema name='user' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarEdit} />
           <Schema name='default' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBar} />
           <Schema name='logout' sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarLogout} dispatch={this.props.dispatch} />
 
@@ -52,6 +55,12 @@ class Routes extends Component {
           <Route name='createVacancy' component={CreateVacancy} title='Створити вакансію' schema='back' />
           <Route name='editVacancy' component={EditVacancy} title='Редагувати вакснію' schema='back' />
           <Route name='companyVacancies' component={CompanyVacancies} title='Мої вакансії' schema='logout' />
+
+          <Route name='userStudent' component={Student} schema='user' />
+          <Route name='userCompany' component={Company} schema='user' />
+
+          <Route name='editCompany' component={EditCompany} schema='back' />
+          <Route name='editStudent' component={EditStudent} schema='back' />
           
         </Router>
       </View>
