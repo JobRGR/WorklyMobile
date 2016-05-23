@@ -8,6 +8,7 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
+import Browser from 'react-native-browser'
 import short from '../../tools/short'
 import {setCurrent} from '../../actions/vacancies'
 import Error from '../../components/error'
@@ -33,6 +34,19 @@ class Company extends Component {
     Actions.vacancy({title: short(title, 30)})
   }
 
+  openInBrowser() {
+    Browser.open(this.props.data.site, {
+      showUrlWhileLoading: true,
+      navigationButtonsHidden: false,
+      showActionButton: true,
+      showDoneButton: true,
+      doneButtonTitle: 'Done',
+      showPageTitles: true,
+      disableContextualPopupMenu: false,
+      hideWebViewBoundaries: false
+    })
+  }
+
   company() {
     return (
       <ScrollView style={styles.container}>
@@ -44,7 +58,7 @@ class Company extends Component {
         </View>
         <View style={(this.props.data.email || this.props.data.site || this.props.data.city) && styles.info}>
           {this.props.data.email && <Text style={styles.text}>Email: <Text style={styles.sub}>{this.props.data.email}</Text></Text>}
-          {this.props.data.site && <Text style={styles.text}>Веб-сайт: <Text style={styles.sub}>{this.props.data.site}</Text></Text>}
+          {this.props.data.site && <Text style={styles.text}>Веб-сайт: <Text onPress={() => this.openInBrowser()} style={styles.sub}>{this.props.data.site}</Text></Text>}
           {this.props.data.city && <Text style={styles.text}>Місто:  <Text style={styles.text}>{this.props.data.city.name}</Text></Text>}
         </View>
         {this.props.data.about && <Text style={[styles.about, styles.text]}>{this.props.data.about}</Text>}

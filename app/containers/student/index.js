@@ -7,6 +7,7 @@ import React, {
   Image
 } from 'react-native'
 import {connect} from 'react-redux'
+import Communications from 'react-native-communications'
 import Skills from '../../components/skills'
 import short from '../../tools/short'
 import Avatar from '../../components/avatar'
@@ -19,6 +20,10 @@ class Student extends Component {
   static propTypes = {
     student: PropTypes.object.isRequired
   };
+
+  call() {
+    Communications.phonecall(this.props.student.telephone, true)
+  }
 
   showExperience() {
     return (
@@ -68,7 +73,12 @@ class Student extends Component {
           {this.props.student.city && <Text style={styles.text}>Місто:  <Text style={styles.sub}>{this.props.student.city.name}</Text></Text>}
           {this.props.student.dob && <Text style={styles.text}>Дата народження: <Text style={styles.sub}>{formatDate(this.props.student.dob)}</Text></Text>}
           {this.props.student.email && <Text style={styles.text}>Email: <Text style={styles.sub}>{this.props.student.email}</Text></Text>}
-          {this.props.student.telephone && <Text style={styles.text}>Телефон:  <Text style={styles.sub}>{this.props.student.telephone}</Text></Text>}
+          {
+            this.props.student.telephone &&
+            <Text style={styles.text}>
+              Телефон:  <Text style={styles.sub} onPress={() => this.call()}>{this.props.student.telephone}</Text>
+            </Text>
+          }
         </View>
         {this.props.student.about && <Text style={[styles.about, styles.text]}>{this.props.student.about}</Text>}
         <View style={styles.vacanciesWrapper}>
