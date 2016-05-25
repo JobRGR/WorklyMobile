@@ -1,5 +1,4 @@
 import React, {Component, View, TextInput, Text} from 'react-native'
-import {connect} from 'react-redux'
 import styles from './auth_input.styles'
 
 class AuthInput extends Component {
@@ -15,7 +14,7 @@ class AuthInput extends Component {
           placeholderTextColor='#A5A5A5'
           multiline={this.props.multiline}
           placeholder={this.props.placeholder}
-          onChangeText={this.props.onChangeText || (text => console.log(text))}
+          onChangeText={this.props.onChangeText || (text => this._input = text)}
           value={this.props.value}
         />
         {this.props.error && typeof this.props.error === 'string' && <Text style={styles.errorText}>{this.props.error}</Text>}
@@ -24,4 +23,4 @@ class AuthInput extends Component {
   }
 }
 
-export default connect()(AuthInput)
+export default AuthInput

@@ -7,7 +7,10 @@ import {
   ADD_VACANCY,
   REMOVE_VACANCY,
   UPDATE_VACANCY,
-  SET_VACANCY_SEARCH
+  SET_VACANCY_SEARCH,
+  SUBSCRIBE_VACANCIES,
+  ERROR_SUBSCRIBE_VACANCIES,
+  START_SUBSCRIBE_VACANCIES
 } from '../actions/vacancies'
 
 const count = 15
@@ -18,7 +21,9 @@ let initialState = {
   search: '',
   current: null,
   loading: false,
-  error: false
+  error: false,
+  subscribeLoading: false,
+  subscribeError: false
 }
 
 export default (state = initialState, action = {}) => {
@@ -47,7 +52,9 @@ export default (state = initialState, action = {}) => {
       let [current] = state.data.filter(({_id}) => _id == action.data)
       return {
         ...state,
-        current
+        current,
+        subscribeLoading: false,
+        subscribeError: false
       }
     case UPDATE_COUNT_VACANCIES:
       return {
@@ -74,6 +81,30 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         search: action.data
+      }
+    case START_SUBSCRIBE_VACANCIES:
+      return {
+        ...state,
+        subscribeLoading: true,
+        subscribeError: false
+      }
+    case ERROR_SUBSCRIBE_VACANCIES:
+      return {
+        ...state,
+        subscribeLoading: false,
+        subscribeError: true
+      }
+    case SUBSCRIBE_VACANCIES:
+      const {current: currentVacancy} = state
+      if (currentVacancy && currentVacancy._id == action.data) {
+        currentVacancy.haveSubscription = true
+      }
+      return {
+        ...state,
+        data: state.data.map(vacancy => vacancy._id == action.data ? {...vacancy, haveSubscription: true} : vacancy),
+        current: currentVacancy,
+        subscribeLoading: false,
+        subscribeError: false
       }
     default:
       return state

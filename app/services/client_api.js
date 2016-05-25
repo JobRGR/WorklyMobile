@@ -93,6 +93,14 @@ class ClientApi {
       method: 'delete'
     })
   }
+
+  subscribeVacancy(id, body) {
+    return ClientApi.request({
+      url: `${this.url}/vacancy-subscribe/${id}`,
+      method: 'post',
+      body
+    })
+  }
 }
 
 export default new ClientApi()

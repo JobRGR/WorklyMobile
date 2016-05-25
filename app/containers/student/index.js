@@ -22,7 +22,8 @@ class Student extends Component {
   };
 
   call() {
-    Communications.phonecall(this.props.student.telephone, true)
+    const tel = this.props.student.telephone.replace(/-/g, '')
+    Communications.phonecall(tel, true)
   }
 
   showExperience() {

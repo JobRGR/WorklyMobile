@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     padding: 20
   },
 
+  input: {
+    width: window.width - 40
+  },
+
   sub: {
     color,
     fontSize: 14
@@ -60,6 +64,12 @@ const styles = StyleSheet.create({
 
   vacanciesWrapperTitle: {
     color: '#5a5b5f',
+    fontSize: 18,
+    marginBottom: 5
+  },
+
+  subscribeTitle: {
+    color,
     fontSize: 18,
     marginBottom: 5
   },

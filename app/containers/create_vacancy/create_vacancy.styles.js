@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
 
+  question: {
+    fontSize: 16,
+    color: '#5a5b5f'
+  },
+
   companyName: {
     color: '#5a5b5f',
     fontSize: 21,
