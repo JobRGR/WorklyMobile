@@ -25,8 +25,16 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 
+  list: {
+    color: '#5a5b5f',
+    fontSize: 24,
+    position: 'absolute',
+    left: window.width - 120,
+    marginTop: 10
+  },
+
   vacancy: {
-    width: window.width * 0.70
+    width: window.width * 0.65
   }
 })
 

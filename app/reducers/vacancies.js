@@ -10,7 +10,8 @@ import {
   SET_VACANCY_SEARCH,
   SUBSCRIBE_VACANCIES,
   ERROR_SUBSCRIBE_VACANCIES,
-  START_SUBSCRIBE_VACANCIES
+  START_SUBSCRIBE_VACANCIES,
+  REMOVE_CATCH
 } from '../actions/vacancies'
 
 const count = 15
@@ -106,6 +107,8 @@ export default (state = initialState, action = {}) => {
         subscribeLoading: false,
         subscribeError: false
       }
+    case REMOVE_CATCH:
+      return initialState
     default:
       return state
   }

@@ -22,6 +22,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: window.width - 75,
     marginTop: -37
+  },
+  
+  leftIcon: {
+    color: '#5a5b5f',
+    fontSize: 14,
+    position: 'absolute',
+    left: window.width - 90,
+    marginTop: 10
+  },
+
+
+  shortItem: {
+    width: window.width * 0.7
   }
 })
 

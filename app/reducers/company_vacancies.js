@@ -5,7 +5,8 @@ import {
   ADD_USER_COMPANY_VACANCY,
   UPDATE_USER_COMPANY_COUNT,
   REMOVE_USER_COMPANY_VACANCY,
-  UPDATE_USER_COMPANY_VACANCY
+  UPDATE_USER_COMPANY_VACANCY,
+  SET_USER_COMPANY_VACANCY
 } from '../actions/company_vacancies'
 
 const count = 15
@@ -14,6 +15,7 @@ let initialState = {
   vacancies: null,
   loading: false,
   error: false,
+  current: null,
   count
 }
 
@@ -61,6 +63,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         vacancies: state.vacancies.map(vacancy => vacancy._id == id ? {...vacancy, ...data} : vacancy)
+      }
+    case SET_USER_COMPANY_VACANCY:
+      const [current] = state.vacancies.filter(vacancy => vacancy._id == action.data)
+      return {
+        ...state,
+        current 
       }
     default:
       return state

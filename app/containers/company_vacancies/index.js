@@ -10,7 +10,7 @@ import React, {
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
 import {setCurrent} from '../../actions/vacancies'
-import {fetchVacancies, updateCount, removeVacancy} from '../../actions/company_vacancies'
+import {fetchVacancies, updateCount, removeVacancy, setVacancy as setVacancyResult} from '../../actions/company_vacancies'
 import {setVacancy} from '../../actions/edit_vacancy'
 import Error from '../../components/error'
 import Loading from '../../components/loading'
@@ -31,8 +31,9 @@ class CompanyVacancies extends Component {
     updateCount: PropTypes.func.isRequired,
     setCurrent: PropTypes.func.isRequired,
     removeVacancy: PropTypes.func.isRequired,
-    company: PropTypes.object.isRequired,
-    setVacancy: PropTypes.func.isRequired
+    company: PropTypes.object,
+    setVacancy: PropTypes.func.isRequired,
+    setVacancyResult: PropTypes.func.isRequired
   }
 
   componentWillMount() {
@@ -49,6 +50,11 @@ class CompanyVacancies extends Component {
     Actions.editVacancy()
   }
 
+  setVacancy({_id, name}) {
+    this.props.setVacancyResult(_id)
+    Actions.vacancyResult({title: short(name, 25)})
+  }
+
   content() {
     return (
       <SideBar>
@@ -61,6 +67,7 @@ class CompanyVacancies extends Component {
               .filter((_, index) => index < this.props.count)
               .map(vacancy =>
                 <View key={vacancy._id}>
+                  <Text style={styles.list} onPress={() => this.setVacancy(vacancy)}>≡</Text>
                   <Text style={styles.edit} onPress={() => this.editVacancy(vacancy)}>✎</Text>
                   <Text style={styles.remove} onPress={() => this.props.removeVacancy(vacancy._id)}>✕</Text>
                   <View style={styles.vacancy}>
@@ -96,7 +103,8 @@ const mapDispatchToProps = dispatch => ({
   updateCount: () => dispatch(updateCount),
   setCurrent: data => dispatch(setCurrent(data)),
   removeVacancy: data => dispatch(removeVacancy(data)),
-  setVacancy: data => dispatch(setVacancy(data))
+  setVacancy: data => dispatch(setVacancy(data)),
+  setVacancyResult: data => dispatch(setVacancyResult(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyVacancies)

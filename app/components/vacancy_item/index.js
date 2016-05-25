@@ -14,7 +14,7 @@ class VacancyItem extends Component {
             <View>
               <Text style={styles.title}>{short(this.props.vacancy.name, 30)}</Text>
               <View style={[styles.row, styles.subRow]}>
-                <Text style={styles.sub}>{this.props.vacancy.company.name.name}</Text>
+                {this.props.vacancy.company && <Text style={styles.sub}>{this.props.vacancy.company.name.name}</Text>}
                 {this.props.vacancy.city && <Text style={styles.text}> | </Text>}
                 {this.props.vacancy.city && <Text style={styles.text}>{this.props.vacancy.city.name}</Text>}
               </View>

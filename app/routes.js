@@ -19,6 +19,7 @@ import Company from './containers/company'
 import EditCompany from './containers/edit_company'
 import CompanyVacancies from './containers/company_vacancies'
 import EditStudent from './containers/edit_student'
+import VacancyResult from './containers/vacancy_result'
 
 
 class Routes extends Component {
@@ -61,7 +62,9 @@ class Routes extends Component {
 
           <Route name='editCompany' component={EditCompany} schema='back' />
           <Route name='editStudent' component={EditStudent} schema='back' />
-          
+
+          <Route name='vacancyResult' component={VacancyResult} schema='back' />
+
         </Router>
       </View>
     )

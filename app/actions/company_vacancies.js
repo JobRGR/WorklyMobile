@@ -11,6 +11,8 @@ export const UPDATE_USER_COMPANY_COUNT = 'UPDATE_USER_COMPANY_COUNT'
 
 export const UPDATE_USER_COMPANY_VACANCY = 'UPDATE_USER_COMPANY_VACANCY'
 
+export const SET_USER_COMPANY_VACANCY = 'SET_USER_COMPANY_VACANCY'
+
 export let fetchVacancies = companyName => async dispatch => {
   dispatch({type: START_FETCH_USER_COMPANY_VACANCIES})
   try {
@@ -34,5 +36,6 @@ export let removeVacancy = data => async dispatch => {
 
 export let addVacancy = data => ({type: ADD_USER_COMPANY_VACANCY, data})
 export let updateCount = ({type: UPDATE_USER_COMPANY_COUNT})
+export let setVacancy = data => ({type: SET_USER_COMPANY_VACANCY, data})
 
 export let updateVacancy = (id, data) => ({type: UPDATE_USER_COMPANY_VACANCY, data: {id, data}})
