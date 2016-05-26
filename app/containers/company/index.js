@@ -11,6 +11,7 @@ import {Actions} from 'react-native-redux-router'
 import Browser from 'react-native-browser'
 import short from '../../tools/short'
 import {setCurrent} from '../../actions/vacancies'
+import Back from '../../components/back'
 import Error from '../../components/error'
 import Avatar from '../../components/avatar'
 import Loading from '../../components/loading'
@@ -97,10 +98,18 @@ class Company extends Component {
     return <Text style={[styles.vacanciesWrapperTitle, styles.center]}>У {this.props.data.name.name} нeмає вакансій</Text>
   }
 
-  render() {
+  content() {
     if (this.props.errorFetch) return <Error />
     if (this.props.startFetch) return <Loading />
     return this.company()
+  }
+
+  render() {
+    return (
+      <Back>
+        {this.content()}
+      </Back>
+    )
   }
 }
 

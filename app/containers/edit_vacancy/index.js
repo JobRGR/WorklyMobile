@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {updateAbout, updateCity, updateName, updateSkill, editVacancy, addSkill, removeSkill} from '../../actions/edit_vacancy'
 import AuthInput from '../../components/auth_input'
 import short from '../../tools/short'
+import Back from '../../components/back'
 import Avatar from '../../components/avatar'
 import Button from '../../components/button'
 import styles from '../create_vacancy/create_vacancy.styles'
@@ -37,74 +38,76 @@ class EditVacancy extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.row}>
-          <Avatar company={this.props.company} />
-          <View>
-            <Text style={styles.companyName}>{short(this.props.company.name.name, 30)}</Text>
+      <Back>
+        <View style={styles.container}>
+          <View style={styles.row}>
+            <Avatar company={this.props.company} />
+            <View>
+              <Text style={styles.companyName}>{short(this.props.company.name.name, 30)}</Text>
+            </View>
           </View>
-        </View>
-
-        <AuthInput
-          placeholder='Назва вакансії'
-          maxLength={200}
-          style={styles.input}
-          error={this.props.errorName && 'Назва необхідна'}
-          onChangeText={this.props.updateName}
-          value={this.props.name}
-        />
-        <AuthInput
-          placeholder='Місто'
-          maxLength={100}
-          style={styles.input}
-          onChangeText={this.props.updateCity}
-          value={this.props.city}
-        />
-        <AuthInput
-          placeholder='Про вакансію'
-          maxLength={1000}
-          style={styles.input}
-          onChangeText={this.props.updateAbout}
-          value={this.props.about}
-          style={[styles.input, {height: 180}]}
-          multiline
-        />
-
-        <View style={styles.row}>
+  
           <AuthInput
-            placeholder='Навички'
+            placeholder='Назва вакансії'
             maxLength={200}
-            style={styles.rowInput}
-            onChangeText={this.props.updateSkill}
-            value={this.props.skill}
+            style={styles.input}
+            error={this.props.errorName && 'Назва необхідна'}
+            onChangeText={this.props.updateName}
+            value={this.props.name}
           />
+          <AuthInput
+            placeholder='Місто'
+            maxLength={100}
+            style={styles.input}
+            onChangeText={this.props.updateCity}
+            value={this.props.city}
+          />
+          <AuthInput
+            placeholder='Про вакансію'
+            maxLength={1000}
+            style={styles.input}
+            onChangeText={this.props.updateAbout}
+            value={this.props.about}
+            style={[styles.input, {height: 180}]}
+            multiline
+          />
+  
+          <View style={styles.row}>
+            <AuthInput
+              placeholder='Навички'
+              maxLength={200}
+              style={styles.rowInput}
+              onChangeText={this.props.updateSkill}
+              value={this.props.skill}
+            />
+            <Button
+              style={styles.rowButton}
+              onPress={() => this.props.skill.length && this.props.addSkill(this.props.skill)}
+              text='Додати навичку'
+            />
+          </View>  
+  
+          {
+            this.props.skills.length > 0 &&
+            <View style={styles.skillContainer}>
+              {this.props.skills.map((skill, index) =>
+                <TouchableWithoutFeedback key={index} onPress={() => this.props.removeSkill(index)}>
+                  <View style={styles.label}>
+                    <Text style={styles.text}>{skill}</Text>
+                  </View>
+                </TouchableWithoutFeedback>
+              )}
+            </View>
+          }
+  
           <Button
-            style={styles.rowButton}
-            onPress={() => this.props.skill.length && this.props.addSkill(this.props.skill)}
-            text='Додати навичку'
+            loading={this.props.loading}
+            onPress={() => this.onClick()}
+            text='Редагувати вакаснію'
+            style={styles.input}
           />
-        </View>  
-
-        {
-          this.props.skills.length > 0 &&
-          <View style={styles.skillContainer}>
-            {this.props.skills.map((skill, index) =>
-              <TouchableWithoutFeedback key={index} onPress={() => this.props.removeSkill(index)}>
-                <View style={styles.label}>
-                  <Text style={styles.text}>{skill}</Text>
-                </View>
-              </TouchableWithoutFeedback>
-            )}
-          </View>
-        }
-
-        <Button
-          loading={this.props.loading}
-          onPress={() => this.onClick()}
-          text='Редагувати вакаснію'
-          style={styles.input}
-        />
-      </View>
+        </View>
+      </Back>  
     )
   }
 }

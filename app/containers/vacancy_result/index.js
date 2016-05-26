@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
 import {setCurrent} from '../../actions/students'
 import Error from '../../components/error'
+import Back from '../../components/back'
 import StudentItem from '../../components/student_item'
 import short from '../../tools/short'
 import styles from '../feed/feed.styles'
@@ -29,24 +30,26 @@ class VacancyResult extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {
-          this.props.vacancy.testsResults.length > 0
-          ? this.props.vacancy.testsResults
-            .sort((a, b) => -(a.correct - b.correct))
-            .map(({student, correct}, index) =>
-              <View key={`${student._id}${index}`}>
-                <Text style={styles.leftIcon}>
-                  {correct} з {this.props.vacancy.openQuestions.length + this.props.vacancy.testQuestions.length}
-                </Text>
-                <View style={styles.shortItem}>
-                  <StudentItem onPress={() => this.setCurrent(student)} student={student} />
-                </View>
-               </View>
-            )
-          : <Error text='Немає відклінувшихся студентів' />
-        }
-      </ScrollView>
+      <Back>
+        <ScrollView style={styles.container}>
+          {
+            this.props.vacancy.testsResults.length > 0
+            ? this.props.vacancy.testsResults
+              .sort((a, b) => -(a.correct - b.correct))
+              .map(({student, correct}, index) =>
+                <View key={`${student._id}${index}`}>
+                  <Text style={styles.leftIcon}>
+                    {correct} з {this.props.vacancy.openQuestions.length + this.props.vacancy.testQuestions.length}
+                  </Text>
+                  <View style={styles.shortItem}>
+                    <StudentItem onPress={() => this.setCurrent(student)} student={student} />
+                  </View>
+                 </View>
+              )
+            : <Error text='Немає відклінувшихся студентів' />
+          }
+        </ScrollView>
+      </Back>
     )
   }
 }

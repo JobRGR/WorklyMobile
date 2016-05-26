@@ -12,6 +12,7 @@ import short from '../../tools/short'
 import Error from '../../components/error'
 import Avatar from '../../components/avatar'
 import Loading from '../../components/loading'
+import Back from '../../components/back'
 import capitalize from '../../tools/capitalize'
 import styles from '../company/company.styles'
 
@@ -54,10 +55,18 @@ class Competence extends Component {
     )
   }
 
-  render() {
+  content() {
     if (this.props.error) return <Error />
     if (this.props.loading) return <Loading />
     return this.competence()
+  }
+
+  render() {
+    return (
+      <Back>
+        {this.content()}
+      </Back>
+    )
   }
 }
 
