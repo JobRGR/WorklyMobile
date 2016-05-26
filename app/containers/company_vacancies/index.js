@@ -9,6 +9,7 @@ import React, {
 } from 'react-native'
 import {connect} from 'react-redux'
 import {Actions} from 'react-native-redux-router'
+import Swipeout from 'react-native-swipeout'
 import {setCurrent} from '../../actions/vacancies'
 import {fetchVacancies, updateCount, removeVacancy, setVacancy as setVacancyResult} from '../../actions/company_vacancies'
 import {setVacancy} from '../../actions/edit_vacancy'
@@ -19,6 +20,7 @@ import More from '../../components/more'
 import VacancyItem from '../../components/vacancy_item'
 import short from '../../tools/short'
 import styles from './company_vacancies.styles'
+import {red, green} from '../../components/base/color'
 
 class CompanyVacancies extends Component {
 
@@ -65,16 +67,30 @@ class CompanyVacancies extends Component {
             this.props.vacancies.length > 0 &&
             this.props.vacancies
               .filter((_, index) => index < this.props.count)
-              .map(vacancy =>
-                <View key={vacancy._id}>
-                  <Text style={styles.list} onPress={() => this.setVacancy(vacancy)}>≡</Text>
-                  <Text style={styles.edit} onPress={() => this.editVacancy(vacancy)}>✎</Text>
-                  <Text style={styles.remove} onPress={() => this.props.removeVacancy(vacancy._id)}>✕</Text>
-                  <View style={styles.vacancy}>
-                    <VacancyItem onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} />
-                  </View>  
-                </View>
-              )
+              .map(vacancy => {
+                const swipeoutBtns = [
+                  {
+                    text: '≡',
+                    backgroundColor: '#4078C0',
+                    onPress: () => this.setVacancy(vacancy)
+                  },
+                  {
+                    text: '✎',
+                    backgroundColor: green,
+                    onPress: () => this.editVacancy(vacancy)
+                  },
+                  {
+                    text: '✕',
+                    backgroundColor: red,
+                    onPress: () => this.props.removeVacancy(vacancy._id)
+                  }
+                ]
+                return (
+                  <Swipeout backgroundColor='#fff000' key={vacancy._id} right={swipeoutBtns} autoClose>
+                    <VacancyItem style={styles.vacancy}  onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} widthotAbout />
+                  </Swipeout>
+                )
+              })
           }
           {this.props.error && <Error />}
           {(this.props.vacancies && this.props.vacancies.length == 0) && <Error text='У вас не має вакасній' />}

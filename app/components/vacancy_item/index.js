@@ -1,4 +1,10 @@
-import React, {Component, Text, View, Image, TouchableHighlight} from 'react-native'
+import React, {
+  Component,
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+} from 'react-native'
 import short from '../../tools/short'
 import Avatar from '../avatar'
 import styles from './vacancy_item.styles'
@@ -8,7 +14,7 @@ class VacancyItem extends Component {
   render() {
     return (
       <TouchableHighlight underlayColor='white' onPress={this.props.onPress}>
-        <View style={styles.container}>
+        <View style={this.props.style ? this.props.style : styles.container}>
           <View style={styles.row}>
             <Avatar company={this.props.vacancy.company} />
             <View>
@@ -20,7 +26,7 @@ class VacancyItem extends Component {
               </View>
             </View>
           </View>
-          {this.props.vacancy.about && <Text style={styles.text}>{short(this.props.vacancy.about, 150)}</Text>}
+          {this.props.vacancy.about && !this.props.widthotAbout && <Text style={styles.text}>{short(this.props.vacancy.about, 150)}</Text>}
         </View>
       </TouchableHighlight>
     )

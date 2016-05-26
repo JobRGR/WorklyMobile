@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
 
   item: {
     fontSize: 16,
-    paddingTop: 6,
-    paddingBottom: 6,
+    paddingTop: 10,
+    paddingBottom: 10,
     paddingLeft: 10,
     textAlign: 'left',
     color: '#fff'

@@ -1,4 +1,9 @@
-import React, {Component, View, Image} from 'react-native'
+import React, {
+  Component,
+  View,
+  Image,
+  TextInput,
+} from 'react-native'
 import styles from './logo.styles'
 import uri from './logo.image'
 

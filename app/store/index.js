@@ -7,5 +7,8 @@ const logger = createLogger()
 
 export default createStore(
   reducer,
-  applyMiddleware(thunk, logger)
+  applyMiddleware(
+    thunk,
+    logger
+  )
 )

@@ -6,7 +6,18 @@ const window = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    padding: 20
+    paddingTop: 20,
+    paddingLeft: 10,
+    paddingBottom: 20
+  },
+
+  vacancy: {
+    borderBottomColor: green,
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
+    backgroundColor: '#fff',
+    paddingLeft: 10,
+    paddingTop: 15
   },
 
   remove: {
@@ -31,10 +42,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: window.width - 120,
     marginTop: 10
-  },
-
-  vacancy: {
-    width: window.width * 0.65
   }
 })
 
