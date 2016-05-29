@@ -11,11 +11,24 @@
 
 #import "RCTRootView.h"
 
+#import "AppHub.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  [AppHub setApplicationID:@"waE3pVOgsXjgdSLXgE7w"];
+  
+  AHBuild *build = [[AppHub buildManager] currentBuild];
+  
   NSURL *jsCodeLocation;
+  
+  jsCodeLocation = [build.bundle URLForResource:@"main"
+                                  withExtension:@"jsbundle"];
+
+  
+  
 
   /**
    * Loading JavaScript code - uncomment the one you want.
@@ -31,7 +44,7 @@
    * on the same Wi-Fi network.
    */
 
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+  // jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
 
   /**
    * OPTION 2

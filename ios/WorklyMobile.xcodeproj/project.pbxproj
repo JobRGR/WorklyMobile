@@ -22,6 +22,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A35E25811CFB7E7F00E39D15 /* libAppHub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35E25711CFB7DE000E39D15 /* libAppHub.a */; };
+		A35E25851CFB7E8E00E39D15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35E25841CFB7E8E00E39D15 /* SystemConfiguration.framework */; };
+		A35E25871CFB7E9B00E39D15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A35E25861CFB7E9B00E39D15 /* libz.tbd */; };
 		A37813DD1CF393140041C1AE /* libRCTBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37813D01CF392C00041C1AE /* libRCTBrowser.a */; };
 		A3CBE92E1CBAE5A2003112F1 /* libRNSpinkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CBE92D1CBAE391003112F1 /* libRNSpinkit.a */; };
 /* End PBXBuildFile section */
@@ -104,6 +107,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		A35E25701CFB7DE000E39D15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A35E25691CFB7DE000E39D15 /* AppHub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 555FF3AF1B37AC8D0064F175;
+			remoteInfo = AppHub;
+		};
+		A35E25721CFB7DE000E39D15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A35E25691CFB7DE000E39D15 /* AppHub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 555FF3BA1B37AC8D0064F175;
+			remoteInfo = AppHubTests;
+		};
 		A37813CF1CF392C00041C1AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A37813C91CF392C00041C1AE /* RCTBrowser.xcodeproj */;
@@ -149,6 +166,9 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A35E25691CFB7DE000E39D15 /* AppHub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppHub.xcodeproj; path = ../node_modules/apphub/AppHub/AppHub.xcodeproj; sourceTree = "<group>"; };
+		A35E25841CFB7E8E00E39D15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A35E25861CFB7E9B00E39D15 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A37813C91CF392C00041C1AE /* RCTBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBrowser.xcodeproj; path = "../node_modules/react-native-browser/RCTBrowser.xcodeproj"; sourceTree = "<group>"; };
 		A3CBE91E1CBAE391003112F1 /* RNSpinkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSpinkit.xcodeproj; path = "../node_modules/react-native-spinkit/ios/RNSpinkit.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +185,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35E25871CFB7E9B00E39D15 /* libz.tbd in Frameworks */,
+				A35E25851CFB7E8E00E39D15 /* SystemConfiguration.framework in Frameworks */,
+				A35E25811CFB7E7F00E39D15 /* libAppHub.a in Frameworks */,
 				A37813DD1CF393140041C1AE /* libRCTBrowser.a in Frameworks */,
 				A3CBE92E1CBAE5A2003112F1 /* libRNSpinkit.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -289,6 +312,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A35E25691CFB7DE000E39D15 /* AppHub.xcodeproj */,
 				A37813C91CF392C00041C1AE /* RCTBrowser.xcodeproj */,
 				A3CBE91E1CBAE391003112F1 /* RNSpinkit.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -316,6 +340,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A35E25861CFB7E9B00E39D15 /* libz.tbd */,
+				A35E25841CFB7E8E00E39D15 /* SystemConfiguration.framework */,
 				13B07FAE1A68108700A75B9A /* WorklyMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WorklyMobileTests */,
@@ -330,6 +356,15 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* WorklyMobile.app */,
 				00E356EE1AD99517003FC87E /* WorklyMobileTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A35E256A1CFB7DE000E39D15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A35E25711CFB7DE000E39D15 /* libAppHub.a */,
+				A35E25731CFB7DE000E39D15 /* AppHub.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -417,6 +452,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = A35E256A1CFB7DE000E39D15 /* Products */;
+					ProjectRef = A35E25691CFB7DE000E39D15 /* AppHub.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -543,6 +582,20 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A35E25711CFB7DE000E39D15 /* libAppHub.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAppHub.a;
+			remoteRef = A35E25701CFB7DE000E39D15 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A35E25731CFB7DE000E39D15 /* AppHub.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AppHub.xctest;
+			remoteRef = A35E25721CFB7DE000E39D15 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		A37813D01CF392C00041C1AE /* libRCTBrowser.a */ = {
@@ -691,6 +744,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/apphub/AppHub/**",
 				);
 				INFOPLIST_FILE = WorklyMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -707,6 +761,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/apphub/AppHub/**",
 				);
 				INFOPLIST_FILE = WorklyMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
