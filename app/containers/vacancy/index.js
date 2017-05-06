@@ -1,6 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
+import React, {Component, PropTypes} from 'react'
+import {
   Text,
   ScrollView,
   View,
@@ -10,7 +9,7 @@ import React, {
 import {connect} from 'react-redux'
 import {subscribeVacancy} from '../../actions/vacancies'
 import Skills from '../../components/skills'
-import CheckBox from 'react-native-checkbox'
+import CheckBox from 'react-native-check-box'
 import AuthInput from '../../components/auth_input'
 import Button from '../../components/button'
 import Back from '../../components/back'
@@ -83,10 +82,10 @@ class Vacancy extends Component {
                 <CheckBox
                   key={index}
                   ref={`checkBox${_id}_${index}`}
-                  labelStyle={{fontSize: 14, color: '#5a5b5f', width: window.width - 80, marginBottom: 5}}
-                  label={ans}
-                  checked={this[`checkBox${_id}_${index}`] || false}
-                  onChange={checked => this.updateCheckBox(_id, index, checked)}
+                  style={{flex: 1, padding: 10}}
+                  rightText={ans}
+                  isChecked={this[`checkBox${_id}_${index}`] || false}
+                  onClick={() => this.updateCheckBox(_id, index, !this[`checkBox${_id}_${index}`])}
                 />
               )}
             </View>
@@ -102,7 +101,6 @@ class Vacancy extends Component {
           )
         }
         <Button
-          style={styles.input}
           loading={this.props.subscribeLoading}
           onPress={() => this.onSubscribe()}
           text='Відкликнутись на ваканісію'

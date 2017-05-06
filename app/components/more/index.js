@@ -1,4 +1,5 @@
-import React, {Text, Component, TouchableHighlight, PropTypes} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, TouchableHighlight} from 'react-native'
 import styles from './more.styles'
 
 class More extends Component {

@@ -1,4 +1,5 @@
-import React, {Component, View, TextInput, Text} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {View, TextInput, Text} from 'react-native'
 import styles from './auth_input.styles'
 
 class AuthInput extends Component {

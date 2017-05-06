@@ -1,6 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
+import React, {Component, PropTypes} from 'react'
+import {
   Text,
   ScrollView,
   View,
@@ -8,7 +7,7 @@ import React, {
   TouchableHighlight
 } from 'react-native'
 import {connect} from 'react-redux'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../../react-native-redux-router'
 import Swipeout from 'react-native-swipeout'
 import {setCurrent} from '../../actions/vacancies'
 import {fetchVacancies, updateCount, removeVacancy, setVacancy as setVacancyResult} from '../../actions/company_vacancies'

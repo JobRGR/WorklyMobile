@@ -1,5 +1,5 @@
 import ClientApi from '../services/client_api'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../react-native-redux-router'
 import {REMOVE_CATCH} from './vacancies'
 
 export const SET_USER = 'SET_USER'

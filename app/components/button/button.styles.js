@@ -24,12 +24,15 @@ const styles = StyleSheet.create({
     backgroundColor: color,
     borderRadius: 5,
     marginTop: 5,
-    marginBottom: 5
+    marginBottom: 5,
+    maxHeight: 34,
+    position: 'relative'
   },
 
   spinner: {
     position: 'relative',
-    top: -5
+    height: 34,
+    top: -12
   }
 
 })

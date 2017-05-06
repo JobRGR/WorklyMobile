@@ -1,5 +1,5 @@
-import SideMenu from 'react-native-side-menu'
-import React, {Component, PropTypes} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import Drawer from 'react-native-drawer'
 import {connect} from 'react-redux'
 import {updateMenu} from '../../actions/menu'
 import Menu from '../menu'
@@ -12,13 +12,16 @@ class SideBar extends  Component {
 
   render() {
     return (
-      <SideMenu
-        menu={<Menu />}
-        isOpen={this.props.open}
-        onChange={this.props.updateMenu}
+      <Drawer
+        content={<Menu />}
+        open={this.props.open}
+        tapToClose={true}
+        openDrawerOffset={0.3}
+        panCloseMask={0.3}
+        closedDrawerOffset={-10}
       >
         {this.props.children}
-      </SideMenu>
+      </Drawer>
     )
 
   }

@@ -1,6 +1,5 @@
-import React, {
-  Component,
-  PropTypes,
+import React, {Component, PropTypes} from 'react'
+import {
   Text,
   ScrollView,
   View,
@@ -8,7 +7,7 @@ import React, {
   TouchableHighlight
 } from 'react-native'
 import {connect} from 'react-redux'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../../react-native-redux-router'
 import {setCompany} from '../../actions/company'
 import {fetchCompanies, updateCount, setSearch} from '../../actions/companies'
 import Error from '../../components/error'

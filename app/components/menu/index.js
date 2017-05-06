@@ -1,14 +1,13 @@
-import React, {
+import React, {Component, PropTypes} from 'react'
+import {
   ScrollView,
   View,
   Image,
   Text,
-  Component,
   TouchableWithoutFeedback,
-  PropTypes
 } from 'react-native'
 import {connect} from 'react-redux'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../../react-native-redux-router'
 import Link from '../link'
 import Avatar from '../avatar'
 import {setCompany} from '../../actions/company'

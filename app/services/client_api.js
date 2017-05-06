@@ -4,7 +4,7 @@ class ClientApi {
   static request = request;
 
   constructor() {
-    this.url = 'http://workly.herokuapp.com/api'
+    this.url = 'https://workly.herokuapp.com/api'
   }
 
   fetchVacancies() {

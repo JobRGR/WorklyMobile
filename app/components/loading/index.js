@@ -1,4 +1,5 @@
-import React, {Text, Component, View} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, View} from 'react-native'
 import Spinner from 'react-native-spinkit'
 import {green as color} from '../base/color'
 import styles from './loading.styles'

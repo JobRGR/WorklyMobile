@@ -1,5 +1,6 @@
-import React, {Component, ScrollView, PanResponder} from 'react-native'
-import {Actions} from 'react-native-redux-router'
+import React, {Component, PropTypes} from 'react'
+import {ScrollView, PanResponder} from 'react-native'
+import {Actions} from '../../react-native-redux-router'
 
 class Back extends Component {
   componentWillMount() {

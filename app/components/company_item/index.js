@@ -1,4 +1,5 @@
-import React, {Component, Text, View, Image, TouchableHighlight} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, View, Image, TouchableHighlight} from 'react-native'
 import short from '../../tools/short'
 import Avatar from '../avatar'
 import styles from '../vacancy_item/vacancy_item.styles'

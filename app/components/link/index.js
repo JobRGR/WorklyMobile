@@ -1,4 +1,5 @@
-import React, {Component, Text, View, TouchableHighlight, TouchableWithoutFeedback} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, View, TouchableHighlight, TouchableWithoutFeedback} from 'react-native'
 import styles from './link.styles'
 
 class Link extends Component {
@@ -10,9 +11,11 @@ class Link extends Component {
         <Element
           underlayColor={this.props.underlayColor || 'white'}
           onPress={this.props.onPress}>
-          <Text style={[styles.link, this.props.style]}>
-            {this.props.text}
-          </Text>
+          <View>
+            <Text style={[styles.link, this.props.style]}>
+              {this.props.text}
+            </Text>
+          </View>
         </Element>
       </View>
     )

@@ -1,4 +1,5 @@
-import React, {Text, Component, View} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, View} from 'react-native'
 import styles from './error.styles'
 
 class Error extends Component {

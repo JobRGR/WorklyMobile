@@ -1,5 +1,6 @@
-import React, {Component, PropTypes, Text, View} from 'react-native'
-import {Actions} from 'react-native-redux-router'
+import React, {Component, PropTypes} from 'react'
+import {Text, View} from 'react-native'
+import {Actions} from '../../react-native-redux-router'
 import {connect} from 'react-redux'
 import {setEmail, setPassword, loginUser} from '../../actions/login'
 import Logo from '../../components/logo'

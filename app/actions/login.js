@@ -1,5 +1,5 @@
 import ClientApi from '../services/client_api'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../react-native-redux-router'
 import {SET_USER} from './user'
 
 export const SET_LOGIN_EMAIL = 'SET_LOGIN_EMAIL'

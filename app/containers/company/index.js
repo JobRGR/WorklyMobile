@@ -1,13 +1,7 @@
-import React, {
-  Component,
-  PropTypes,
-  Text,
-  ScrollView,
-  View,
-  Image
-} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, ScrollView, View} from 'react-native'
 import {connect} from 'react-redux'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../../react-native-redux-router'
 import Browser from 'react-native-browser'
 import short from '../../tools/short'
 import {setCurrent} from '../../actions/vacancies'

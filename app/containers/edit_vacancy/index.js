@@ -1,4 +1,5 @@
-import React, {Component, PropTypes, Text, View, ScrollView, TouchableWithoutFeedback} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, View, ScrollView, TouchableWithoutFeedback} from 'react-native'
 import {connect} from 'react-redux'
 import {updateAbout, updateCity, updateName, updateSkill, editVacancy, addSkill, removeSkill} from '../../actions/edit_vacancy'
 import AuthInput from '../../components/auth_input'
@@ -65,7 +66,6 @@ class EditVacancy extends Component {
           <AuthInput
             placeholder='Про вакансію'
             maxLength={1000}
-            style={styles.input}
             onChangeText={this.props.updateAbout}
             value={this.props.about}
             style={[styles.input, {height: 180}]}

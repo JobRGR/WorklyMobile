@@ -1,23 +1,25 @@
 {
   "name": "WorklyMobile",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "react": "0.14.7",
-    "react-native": "0.22.2",
-    "react-native-browser": "0.5.2",
-    "react-native-checkbox": "1.0.8",
-    "react-native-communications": "2.0.0",
-    "react-native-navbar": "1.4.1",
-    "react-native-redux-router": "A-gambit/react-native-redux-router",
-    "react-native-side-menu": "0.18.0",
-    "react-native-spinkit": "0.0.8",
-    "react-native-swipeout": "2.0.12",
-    "react-redux": "4.4.1",
-    "redux": "3.3.1",
-    "redux-logger": "2.6.1",
-    "redux-thunk": "2.0.1"
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.0",
+    "react-native-browser": "0.6.2",
+    "react-native-check-box": "^1.0.4",
+    "react-native-communications": "2.2.1",
+    "react-native-deprecated-custom-components": "0.1.0",
+    "react-native-drawer": "2.3.0",
+    "react-native-navbar": "1.7.1",
+    "react-native-spinkit": "1.0.2",
+    "react-native-swipeout": "2.0.13",
+    "react-redux": "5.0.4",
+    "redux": "3.6.0",
+    "redux-logger": "3.0.1",
+    "redux-thunk": "2.2.0"
   }
 }

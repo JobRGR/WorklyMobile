@@ -1,4 +1,5 @@
-import React, {Component, Text, View, TouchableHighlight} from 'react-native'
+import React, {Component, PropTypes} from 'react'
+import {Text, View, TouchableHighlight} from 'react-native'
 import Spinner from 'react-native-spinkit'
 import styles from './button.styles'
 

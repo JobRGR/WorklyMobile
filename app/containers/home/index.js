@@ -1,5 +1,6 @@
-import React, {Component, Text, View, TouchableHighlight} from 'react-native'
-import {Actions} from 'react-native-redux-router'
+import React, {Component, PropTypes} from 'react'
+import {Text, View, TouchableHighlight} from 'react-native'
+import {Actions} from '../../react-native-redux-router'
 import Logo from '../../components/logo'
 import Link from '../../components/link'
 import styles from './home.styles'

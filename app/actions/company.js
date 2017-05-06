@@ -1,5 +1,5 @@
 import ClientApi from '../services/client_api'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../react-native-redux-router'
 
 export const FETCH_COMPANY = 'FETCH_COMPANY'
 export const ERROR_FETCH_COMPANY = 'ERROR_FETCH_COMPANY'

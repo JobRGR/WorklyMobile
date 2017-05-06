@@ -1,6 +1,7 @@
-import React, {Component, View, StatusBar} from 'react-native'
+import React, {Component} from 'react'
+import {View, StatusBar} from 'react-native'
 import {connect} from 'react-redux'
-import {Router, Route, Schema, Animations} from 'react-native-redux-router'
+import {Router, Route, Schema, Animations} from './react-native-redux-router'
 import {green as color} from './components/base/color'
 import {NavBar, NavBarBack, NavBarLogout, NavBarAuth, NavBarEdit} from './components/nav_bar'
 import Home from './containers/home'
@@ -41,8 +42,8 @@ class Routes extends Component {
 
           <Route name='start' initial={true} component={Start} title='Workly' />
           <Route name='home' component={Home} title='Workly' />
-          <Route name='signup' component={SignUp} title='SignUp' schema='auth' title='Реєстрація' />
-          <Route name='login' component={Login} title='Login' schema='auth'  title='Вхід' />
+          <Route name='signup' component={SignUp} schema='auth' title='Реєстрація' />
+          <Route name='login' component={Login} schema='auth' title='Вхід' />
 
           <Route name='feed' component={Feed} title='Вакансії' schema='logout' />
           <Route name='companyFeed' component={CompanyFeed} schema='logout' />

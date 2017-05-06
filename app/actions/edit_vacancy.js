@@ -1,5 +1,5 @@
 import ClientApi from '../services/client_api'
-import {Actions} from 'react-native-redux-router'
+import {Actions} from '../react-native-redux-router'
 import {updateVacancy} from './vacancies'
 import {updateVacancy as updateCompanyVacancy} from './company_vacancies'
 

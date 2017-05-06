@@ -1,5 +1,6 @@
-import React, {Component, PropTypes, View, Text, TouchableWithoutFeedback} from 'react-native'
-import {Actions} from 'react-native-redux-router'
+import React, {Component, PropTypes} from 'react'
+import {View, Text, TouchableWithoutFeedback} from 'react-native'
+import {Actions} from '../../react-native-redux-router'
 import {connect} from 'react-redux'
 import {fetchCompetence} from '../../actions/competence'
 import capitalize from '../../tools/capitalize'
