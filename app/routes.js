@@ -21,6 +21,7 @@ import EditCompany from './containers/edit_company'
 import CompanyVacancies from './containers/company_vacancies'
 import EditStudent from './containers/edit_student'
 import VacancyResult from './containers/vacancy_result'
+import RoadMap from './containers/road_map'
 
 
 class Routes extends Component {
@@ -66,6 +67,7 @@ class Routes extends Component {
 
           <Route name='vacancyResult' component={VacancyResult} schema='back' />
 
+          <Route name='roadMap' component={RoadMap} title='Дорожня карта' schema='logout' />
         </Router>
       </View>
     )

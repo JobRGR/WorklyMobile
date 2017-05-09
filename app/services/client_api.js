@@ -23,6 +23,11 @@ class ClientApi {
     return ClientApi.request({url: `${this.url}/status`})
   }
 
+  getRoadMap(id) {
+    return ClientApi.request({url: `${this.url}/student-road-map?id=${id}`})
+  }
+
+
   loginUser(body) {
     return ClientApi.request({
       url: `${this.url}/login`,

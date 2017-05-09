@@ -111,6 +111,18 @@ class Menu extends Component {
           </View>
         }
 
+        {
+          this.props.student &&
+          <View style={styles.linkWrapper}>
+            <Link
+              withoutFeedBack
+              onPress={() => this.move('roadMap')}
+              style={styles.item}
+              text='Дорожня Карта'
+            />
+          </View>
+        }
+
       </ScrollView>
     );
   }

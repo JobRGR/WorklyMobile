@@ -13,6 +13,7 @@ import competence from './competece'
 import createVacancy from './create_vacancy'
 import companyVacancies from './company_vacancies'
 import editVacancy from './edit_vacancy'
+import roadMap from './road_map'
 
 
 export default combineReducers({
@@ -29,5 +30,6 @@ export default combineReducers({
   competence,
   createVacancy,
   companyVacancies,
-  editVacancy
+  editVacancy,
+  roadMap
 })
