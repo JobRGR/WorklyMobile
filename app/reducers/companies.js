@@ -3,7 +3,8 @@ import {
   START_FETCH_COMPANIES,
   ERROR_FETCH_COMPANIES,
   UPDATE_COUNT_COMPANIES,
-  SET_COMPANY_SEARCH
+  SET_COMPANY_SEARCH,
+  SET_COMPANY
 } from '../actions/companies'
 
 const count = 15
@@ -48,6 +49,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         search: action.data
+      }
+    case SET_COMPANY:
+      return {
+        ...state,
+        data: state.data.map(x => x._id === action.data._id ? action.data : x)
       }
     default:
       return state

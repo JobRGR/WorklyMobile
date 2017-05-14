@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#fff',
     marginTop: -10,
-    paddingBottom: 30
+    paddingBottom: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   row: {

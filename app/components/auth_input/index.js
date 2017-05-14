@@ -17,6 +17,7 @@ class AuthInput extends Component {
           placeholder={this.props.placeholder}
           onChangeText={this.props.onChangeText || (text => this._input = text)}
           value={this.props.value}
+          defaultValue={this.props.defaultValue}
         />
         {this.props.error && typeof this.props.error === 'string' && <Text style={styles.errorText}>{this.props.error}</Text>}
       </View>

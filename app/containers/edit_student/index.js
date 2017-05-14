@@ -2,16 +2,16 @@ import React, {Component, PropTypes} from 'react'
 import {
   Text,
   ScrollView,
-  View,
-  Image
+  View
 } from 'react-native'
 import {connect} from 'react-redux'
+import {updateStudent} from '../../actions/user'
 import Skills from '../../components/skills'
 import short from '../../tools/short'
 import Back from '../../components/back'
 import Avatar from '../../components/avatar'
-import getPosition from '../../tools/get_position'
-import formatDate from '../../tools/format_date'
+import AuthInput from '../../components/auth_input'
+import Button from '../../components/button'
 import styles from '../company/company.styles'
 
 class Student extends Component {
@@ -20,41 +20,16 @@ class Student extends Component {
     student: PropTypes.object.isRequired
   };
 
-  showExperience() {
-    return (
-      <View>
-        <Text style={styles.vacanciesWrapperTitle}>Досвід</Text>
-        {
-          this.props.student.experiences.map(({about, companyName, position, start, end}, index) => (
-            <View style={styles.info} key={index}>
-              <Text style={styles.text}><Text style={styles.sub}>{position.name}</Text> у {companyName.name}</Text>
-              <Text style={[styles.text, styles.subMargin]}>{formatDate(start)} - {formatDate(end)}</Text>
-              {about && <Text style={styles.text}>{short(about, 350)}</Text>}
-            </View>
-          ))
-        }
-      </View>
-    )
-  }
-
-  showEducation() {
-    return (
-      <View>
-        <Text style={styles.vacanciesWrapperTitle}>Освіта</Text>
-        {
-          this.props.student.educations.map(({university, speciality, start, end}, index) => (
-            <View style={styles.info} key={index}>
-              <Text style={styles.text}><Text style={styles.sub}>{speciality.name}</Text> у {university.name}</Text>
-              <Text style={styles.text}>{formatDate(start)} - {formatDate(end)}</Text>
-            </View>
-          ))
-        }
-      </View>
-    )
+  onClick() {
+    this.props.updateStudent(this.props.student._id, {
+      city: this.refs.city._input,
+      dob: this.refs.dob._input,
+      about: this.refs.about._input,
+      telephone: this.refs.telephone._input,
+    })
   }
 
   render() {
-    const position = getPosition(this.props.student)
     return (
       <Back>
         <ScrollView style={styles.container}>
@@ -65,24 +40,51 @@ class Student extends Component {
             </View>
           </View>
           <View style={styles.info}>
-            {position && <Text style={styles.text}>Позиція: <Text style={styles.sub}>{position}</Text></Text>}
-            {this.props.student.city && <Text style={styles.text}>Місто:  <Text style={styles.sub}>{this.props.student.city.name}</Text></Text>}
-            {this.props.student.dob && <Text style={styles.text}>Дата народження: <Text style={styles.sub}>{formatDate(this.props.student.dob)}</Text></Text>}
-            {this.props.student.email && <Text style={styles.text}>Email: <Text style={styles.sub}>{this.props.student.email}</Text></Text>}
-            {this.props.student.telephone && <Text style={styles.text}>Телефон:  <Text style={styles.sub}>{this.props.student.telephone}</Text></Text>}
+            <AuthInput
+              placeholder='Дата народження'
+              maxLength={200}
+              ref="dob"
+              style={styles.input}
+              defaultValue={this.props.student.dob}
+            />
+            <AuthInput
+              placeholder='Місто'
+              maxLength={100}
+              style={styles.input}
+              ref="city"
+              defaultValue={this.props.student.city ? this.props.student.city.name : ''}
+            />
+            <AuthInput
+              placeholder='Телефон'
+              maxLength={100}
+              style={styles.input}
+              ref="telephone"
+              defaultValue={this.props.student.telephone}
+            />
+            <AuthInput
+              placeholder='Про студента'
+              maxLength={1000}
+              defaultValue={this.props.student.about}
+              ref="about"
+              style={[styles.input, {height: 180}]}
+              multiline
+            />
           </View>
-          {this.props.student.about && <Text style={[styles.about, styles.text]}>{this.props.student.about}</Text>}
-          <View style={styles.vacanciesWrapper}>
-            {this.props.student.skills && <Skills skills={this.props.student.skills} />}
-          </View>
-          {this.props.student.experiences && this.props.student.experiences.length > 0 && this.showExperience()}
-          {this.props.student.educations && this.props.student.educations.length > 0 && this.showEducation()}
+          <Button
+            loading={this.props.loading}
+            onPress={() => this.onClick()}
+            text='Редагувати студента'
+            style={styles.input}
+          />
         </ScrollView>
       </Back>
     )
   }
 }
 
-const mapStateToProps = ({user}) => ({student: user.student})
+const mapStateToProps = ({user}) => ({student: user.student, loading: user.loading})
+const mapDispatchToProps = dispatch => ({
+  updateStudent: (id, body) => dispatch(updateStudent(id, body))
+})
 
-export default connect(mapStateToProps)(Student)
+export default connect(mapStateToProps, mapDispatchToProps)(Student)

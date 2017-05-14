@@ -2,20 +2,30 @@ import React, {Component, PropTypes} from 'react'
 import {
   Text,
   ScrollView,
-  View,
-  Image
+  View
 } from 'react-native'
+import {updateCompany} from '../../actions/user'
 import {connect} from 'react-redux'
 import short from '../../tools/short'
 import Back from '../../components/back'
+import AuthInput from '../../components/auth_input'
+import Button from '../../components/button'
 import Avatar from '../../components/avatar'
 import styles from '../company/company.styles'
 
 class EditCompany extends Component {
-
   static propTypes = {
-    company: PropTypes.object.isRequired
+    company: PropTypes.object.isRequired,
+    loading:  PropTypes.bool.isRequired
   };
+
+  onClick() {
+    this.props.updateCompany(this.props.company._id, {
+      city: this.refs.city._input,
+      site: this.refs.site._input,
+      about: this.refs.about._input,
+    })
+  }
 
   render() {
     return (
@@ -27,18 +37,45 @@ class EditCompany extends Component {
               <Text style={styles.title}>{short(this.props.company.name.name, 30)}</Text>
             </View>
           </View>
-          <View style={(this.props.company.email || this.props.company.site || this.props.company.city) && styles.info}>
-            {this.props.company.email && <Text style={styles.text}>Email: <Text style={styles.sub}>{this.props.company.email}</Text></Text>}
-            {this.props.company.site && <Text style={styles.text}>Веб-сайт: <Text style={styles.sub}>{this.props.company.site}</Text></Text>}
-            {this.props.company.city && <Text style={styles.text}>Місто:  <Text style={styles.text}>{this.props.company.city.name}</Text></Text>}
+          <View style={styles.info}>
+            <AuthInput
+              placeholder='Сайт'
+              maxLength={200}
+              ref="site"
+              style={styles.input}
+              defaultValue={this.props.company.site}
+            />
+            <AuthInput
+              placeholder='Місто'
+              maxLength={100}
+              style={styles.input}
+              ref="city"
+              defaultValue={this.props.company.city ? this.props.company.city.name : ''}
+            />
+            <AuthInput
+              placeholder='Про компанію'
+              maxLength={1000}
+              defaultValue={this.props.company.about}
+              ref="about"
+              style={[styles.input, {height: 180}]}
+              multiline
+            />
           </View>
-          {this.props.company.about && <Text style={[styles.about, styles.text]}>{this.props.company.about}</Text>}
+          <Button
+            loading={this.props.loading}
+            onPress={() => this.onClick()}
+            text='Редагувати компанію'
+            style={styles.input}
+          />
         </ScrollView>
       </Back>
     )
   }
 }
 
-const mapStateToProps = ({user}) => ({company: user.company})
+const mapStateToProps = ({user}) => ({company: user.company, loading: user.loading})
+const mapDispatchToProps = dispatch => ({
+  updateCompany: (id, body) => dispatch(updateCompany(id, body))
+})
 
-export default connect(mapStateToProps)(EditCompany)
+export default connect(mapStateToProps, mapDispatchToProps)(EditCompany)

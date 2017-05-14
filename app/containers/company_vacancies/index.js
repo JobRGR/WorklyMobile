@@ -38,7 +38,7 @@ class CompanyVacancies extends Component {
   }
 
   componentWillMount() {
-    !this.props.vacancies && this.props.fetchVacancies(this.props.company.name.name)
+    this.props.fetchVacancies(this.props.company.name.name)
   }
 
   setCurrent(vacancy) {

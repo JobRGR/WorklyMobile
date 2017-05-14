@@ -6,7 +6,9 @@ export const ERROR_FETCH_COMPANIES = 'ERROR_FETCH_COMPANIES'
 export const UPDATE_COUNT_COMPANIES = 'UPDATE_COUNT_COMPANIES'
 
 export const SET_COMPANY_SEARCH = 'SET_COMPANY_SEARCH'
+export const SET_COMPANY = 'SET_COMPANY'
 
+export let setCompany = data => ({type: SET_COMPANY, data})
 export let setSearch = (data = '') => ({type: SET_COMPANY_SEARCH, data})
 export let updateCount = ({type: UPDATE_COUNT_COMPANIES})
 

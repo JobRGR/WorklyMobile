@@ -4,7 +4,8 @@ import {
   ERROR_FETCH_STUDENTS,
   SET_CURRENT_STUDENT,
   UPDATE_COUNT_STUDENTS,
-  SET_STUDENT_SEARCH
+  SET_STUDENT_SEARCH,
+  SET_STUDENT
 } from '../actions/students'
 
 const count = 15
@@ -54,6 +55,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         search: action.data
+      }
+    case SET_STUDENT:
+      return {
+        ...state,
+        data: state.data.map(x => x._id === action.data._id ? action.data : x)
       }
     default:
       return state

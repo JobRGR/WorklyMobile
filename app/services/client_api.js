@@ -27,7 +27,6 @@ class ClientApi {
     return ClientApi.request({url: `${this.url}/student-road-map?id=${id}`})
   }
 
-
   loginUser(body) {
     return ClientApi.request({
       url: `${this.url}/login`,
@@ -103,6 +102,22 @@ class ClientApi {
     return ClientApi.request({
       url: `${this.url}/vacancy-subscribe/${id}`,
       method: 'post',
+      body
+    })
+  }
+
+  updateCompany(id, body) {
+    return ClientApi.request({
+      url: `${this.url}/company-update/${id}`,
+      method: 'put',
+      body
+    })
+  }
+
+  updateStudent(id, body) {
+    return ClientApi.request({
+      url: `${this.url}/student-update/${id}`,
+      method: 'put',
       body
     })
   }
