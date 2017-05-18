@@ -86,7 +86,7 @@ class CompanyVacancies extends Component {
                 ]
                 return (
                   <Swipeout backgroundColor='#fff000' key={vacancy._id} right={swipeoutBtns} autoClose>
-                    <VacancyItem style={styles.vacancy}  onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} widthotAbout />
+                    <VacancyItem style={styles.vacancy}  onPress={() => this.setCurrent(vacancy)} vacancy={vacancy} widthoutAbout />
                   </Swipeout>
                 )
               })

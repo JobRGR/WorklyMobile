@@ -20,13 +20,20 @@ class VacancyItem extends Component {
             <View>
               <Text style={styles.title}>{short(this.props.vacancy.name, 30)}</Text>
               <View style={[styles.row, styles.subRow]}>
-                {this.props.vacancy.company && <Text style={styles.sub}>{this.props.vacancy.company.name.name}</Text>}
-                {this.props.vacancy.city && <Text style={styles.text}> | </Text>}
-                {this.props.vacancy.city && <Text style={styles.text}>{this.props.vacancy.city.name}</Text>}
+                <Text>
+                  {this.props.vacancy.company && <Text style={styles.sub}>{this.props.vacancy.company.name.name}</Text>}
+                  {this.props.vacancy.city && <Text style={styles.text}> | </Text>}
+                  {this.props.vacancy.city && <Text style={styles.text}>{this.props.vacancy.city.name}</Text>}
+                </Text>
               </View>
             </View>
           </View>
-          {this.props.vacancy.about && !this.props.widthotAbout && <Text style={styles.text}>{short(this.props.vacancy.about, 150)}</Text>}
+          <Text>
+            {
+              this.props.vacancy.about && !this.props.widthoutAbout &&
+              <Text style={styles.text}>{short(this.props.vacancy.about, 150)}</Text>
+            }
+          </Text>
         </View>
       </TouchableHighlight>
     )
